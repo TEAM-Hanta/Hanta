@@ -19,4 +19,9 @@ module.exports = class Post {
     static fetchOne(post_id) {
         return db.execute('SELECT * FROM post WHERE post.id = ?', [post_id]);
     }
+
+    // 글 삭제하기 (현재 로그인된 아이디와 글쓴이가 일치하는지도 추가해야 함)
+    static deletePost(post_id) {
+        return db.execute('DELETE FROM post WHERE post.id = ?', [post_id]);
+    }
 };
