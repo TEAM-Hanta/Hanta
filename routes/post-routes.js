@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', postController.getPosts);
 
 // POST => api/posts/
-router.post('/', postController.CreatePost);
+router.post('/', postController.createPost);
 
 // GET => api/posts/:pid
 router.get('/:pid', postController.getPost);
