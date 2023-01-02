@@ -15,13 +15,18 @@ module.exports = class Post {
         return db.execute('SELECT * FROM post');
     }
 
-    // 해당하는 글 상세보기
+    // post_id에 해당하는 글 상세보기
     static fetchOne(post_id) {
         return db.execute('SELECT * FROM post WHERE post.id = ?', [post_id]);
     }
 
-    // 글 삭제하기 (현재 로그인된 아이디와 글쓴이가 일치하는지도 추가해야 함)
+    // 글 삭제하기 (글쓴이와 현재 로그인된 회원아이디가 일치해야하고, post_id와 id가 일치하는 글을 삭제해야 함)
     static deletePost(post_id) {
         return db.execute('DELETE FROM post WHERE post.id = ?', [post_id]);
+    }
+
+    // user_id가 쓴 글 목록
+    static findMyPost(user_id) {
+        return db.execute('SELECT * FROM post WHERE post.user_id = ?', [user_id]);
     }
 };

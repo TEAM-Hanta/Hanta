@@ -1,19 +1,27 @@
 const express = require('express');
+const { body } = require('express-validator');
 
 const postController = require('../controllers/post-controller');
+const verifyToken = require('../middleware/verify-token');
 
 const router = express.Router();
 
-// GET => api/posts/
+// 유효 토큰 검증 미들웨어
+router.use(verifyToken);
+
+// GET => api/posts/ 전체 글 목록
 router.get('/', postController.getPosts);
 
-// POST => api/posts/
-router.post('/', postController.createPost);
+// POST => api/posts/ 글쓰기 - 제목 30자 이내, 내용 200자 이내
+router.post('/', [body('title').isLength({ max: 30 }), body('content').isLength({ max: 200 })], postController.createPost);
 
-// GET => api/posts/:pid
+// GET => api/posts/:pid 글번호가 특정하는 글 보기
 router.get('/:pid', postController.getPost);
 
-// DELETE => api/posts/:pid
+// DELETE => api/posts/:pid 글번호가 특정하는 글 삭제
 router.delete('/:pid', postController.deletePost);
+
+// GET => api/posts/user/:uid 해당하는 사용자 id가 쓴 글 목록 - 마이페이지
+router.get('/user/:uid', postController.getMyPost);
 
 module.exports = router;
