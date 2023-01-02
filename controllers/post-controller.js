@@ -22,7 +22,7 @@ exports.getPost = (req, res, next) => {
 // 글 생성 - 보류
 exports.createPost = (req, res, next) => {
     const { title, content } = req.body;
-    const createPost = new Post(title, content, 1); // user_id는 현재 로그인된 아이디
+    const createPost = new Post(null, title, content, 1); // user_id는 현재 로그인된 아이디
     createPost
         .save()
         .then((post) => {
