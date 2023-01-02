@@ -158,3 +158,6 @@ sketch
 
 # mysql 
 db_config.json
+
+# jwt
+secret_key.json
