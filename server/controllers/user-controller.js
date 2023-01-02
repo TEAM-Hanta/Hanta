@@ -1,9 +1,10 @@
-const { validationResult } = require('express-validator'); // 검증
-const bcrypt = require('bcryptjs'); // 비밀번호 해싱
-const jwt = require('jsonwebtoken'); // jwt 토큰
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const secret_key = require('../utils/secret_key.json');
 
 const User = require('../models/user');
-const HttpError = require('../models/http-error'); // 에러메세지
+const HttpError = require('../models/http-error');
 
 // 회원가입
 exports.signup = async (req, res, next) => {
@@ -23,7 +24,7 @@ exports.signup = async (req, res, next) => {
         return next(error);
     }
 
-    let hashedPassword; // 비밀번호 암호화
+    let hashedPassword;
     try {
         hashedPassword = await bcrypt.hash(password, 8);
     } catch (err) {
@@ -39,9 +40,9 @@ exports.signup = async (req, res, next) => {
         return next(error);
     }
     // 회원가입 하면 로그인 됨
-    let token; // 토큰 생성
+    let token;
     try {
-        token = jwt.sign({ userId: createUser.id }, 'hanta_supeR!!secret__dont+share key', { expiresIn: '1h' });
+        token = jwt.sign({ userId: createUser.id }, secret_key.key, { expiresIn: '1h' });
     } catch (err) {
         const error = new HttpError('회원가입 실패', 500);
         return next(error);
@@ -81,7 +82,7 @@ exports.login = async (req, res, next) => {
             {
                 userId: existUser[0][0].id,
             },
-            'hanta_supeR!!secret__dont+share key',
+            secret_key.key,
             { expiresIn: '1h' }
         );
     } catch (err) {
