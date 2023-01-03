@@ -1,0 +1,15 @@
+div {
+    box-sizing: border-box;
+}
+
+.list {
+    padding-left: 10%;
+    text-align: left;
+    border-bottom: 1px solid grey;
+}
+
+.sibal {
+    text-align: right;
+    margin-right: 10%;
+    font-size: 20px;
+}

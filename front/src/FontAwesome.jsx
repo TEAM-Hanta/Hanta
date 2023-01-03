@@ -9,6 +9,9 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 // 사용할 아이콘을 라이브러리에 추가
-library.add(faPlus, faUser, faMedal, faCompass, faHome, faArrowLeft, faMagnifyingGlass, faThumbsUp, faComment );
+library.add(faPlus, faUser, faMedal, faCompass, faHome, 
+    faArrowLeft, faMagnifyingGlass, faThumbsUp, faComment,
+    faX );

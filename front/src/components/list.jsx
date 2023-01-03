@@ -1,19 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Count from "./count";
+import "../css/home.css"
 
 function List() {
     return (
         <>
-        <div>
-            <FontAwesomeIcon icon="user" />익명 
+        <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
+            <br></br>
+        <h4><FontAwesomeIcon icon="user" />익명</h4>
+        <p>익명의 글입니다.</p>
+        <div className="sibal">
+            <Count/>
         </div>
-        <div className="list">
-        <h4>17:35</h4>
-        <h5>익명이 작성한 글</h5>
-        </div>
-        <div>
-            <FontAwesomeIcon icon="thumbs-up" />0
-            <FontAwesomeIcon icon="comment" />1
         </div>
         </>
     );
@@ -22,4 +21,4 @@ function List() {
 export default List;
 
 
-/*홈 페이지에 있는 리스트 형태의 글을 컴포넌트로 다시 수정 할예정*/
+{/*홈 페이지에 있는 리스트 형태의 글을 컴포넌트로 다시 수정 할예정*/}   

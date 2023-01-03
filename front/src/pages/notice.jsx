@@ -1,17 +1,16 @@
+import React from "react";
+import Noticecp from "../components/noticecp";
+
 function Notice() {
-    return (
-        <>
-            <div>
+
+  return (
+    <>
+        <div style={{paddingLeft:"15%"}}>
                 <h1>알림</h1>
-            </div>
-            <div className="ct">
-                <ul>
-                    <li className="bd">공지사항 어쩌구 저쩌구</li>
-                    <li className="bd">2022/08/16</li>
-                </ul>
-            </div>
-        </>
-    );
-}
+        </div>
+        <Noticecp/>
+    </>
+  );
+};
 
 export default Notice;
