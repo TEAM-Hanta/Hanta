@@ -19,6 +19,8 @@ function Mypage() {
             <button className="buthony">좋아요한 글</button>
             </div>
 
+            <br/>
+
             <div>
             <Myletter /><Myletter />
             </div>
