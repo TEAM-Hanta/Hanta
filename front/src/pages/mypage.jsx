@@ -1,24 +1,26 @@
 import React from "react";
 import Myletter from "../components/myletter";
+import "../css/write.css"
 
 function Mypage() {
     return (
         <>
-            <div>
-                <h1>마이페이지</h1>
-                <button>로그아웃</button>
+            <div style={{paddingLeft:"15%"}}>
+                <h1>마이페이지
+                <button className="button">로그아웃</button>
+                </h1>
             </div>
 
-            <div className="mypage">
-            <button>작성글</button>
-            <button>댓글단 글</button>
-            <button>좋아요한 글</button>
+            <br/>
+
+            <div className="buthon">
+            <button className="buthony">작성글</button>
+            <button className="buthony">댓글단 글</button>
+            <button className="buthony">좋아요한 글</button>
             </div>
 
-            <br></br>
-
             <div>
-            <Myletter /><Myletter /><Myletter /><Myletter />
+            <Myletter /><Myletter />
             </div>
         </>
     );

@@ -1,13 +1,12 @@
 import React from "react";
+import "../css/home.css"
 
 function Myletter() {
     return (
         <>
-        <div className="myletter">
-            <div>
-                안녕2
-                <h4>2022.08.16 17:56</h4>
-            </div>
+        <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
+        <h4>안녕2</h4>
+        <p style={{color:"grey"}}>2022.12.09 17:35:03</p>
         </div>
         </>
     );
