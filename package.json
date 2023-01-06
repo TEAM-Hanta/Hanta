@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/lee-ou-jin/Hanta#readme",
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

@@ -1,13 +1,15 @@
 import React from "react";
+import "../css/home.css"
 
 function Myletter() {
     return (
         <>
-        <div className="myletter">
-            <div>
-                안녕2
-                <h4>2022.08.16 17:56</h4>
-            </div>
+        <br/>
+        <div className="fuck">
+        <div style={{}}>
+        <h4>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세</h4>
+        <p style={{color:"grey"}}>2022.12.09 17:35:03</p>
+        </div>
         </div>
         </>
     );
