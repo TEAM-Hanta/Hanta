@@ -16,7 +16,7 @@ function Home() {
                 </div>
                 {/*차후 컨포넌트로 리스트 만들예정*/}
             </div>
-            <List /><List /><List /><List /><List /><List /><List /><List />
+            <List /><List /><List /><List /><List />
         </>
     );
 }

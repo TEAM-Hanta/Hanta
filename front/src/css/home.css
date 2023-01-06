@@ -18,6 +18,10 @@ div {
     border: 1px solid black;
     margin-left: 15%;
     margin-right: 15%;
-    background-color: whitesmokemai;
+    background-color: whitesmoke;
     border: none;
+}
+
+.letter {
+    font-size: 20px;
 }
