@@ -19,13 +19,13 @@ module.exports = class Reply {
         return db.execute('SELECT * from reply WHERE post_id = ?', [post_id]);
     }
 
-    // 댓글 삭제 - 내용 변경으로
+    // 댓글 삭제 - db에서 삭제 대신 내용 변경으로
     static deleteReply(reply_id, post_id, user_id) {
         return db.execute('UPDATE reply SET content = "삭제된 댓글입니다." WHERE reply.id = ? AND post_id = ? AND user_id = ?', [reply_id, post_id, user_id]);
     }
 
     // 댓글 찾기
-    static fetchOne(reply_id) {
+    static findReply(reply_id) {
         return db.execute('SELECT * FROM reply WHERE reply.id = ?', [reply_id]);
     }
 };

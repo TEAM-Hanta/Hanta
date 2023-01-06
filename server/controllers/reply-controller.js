@@ -61,7 +61,7 @@ exports.deleteReply = async (req, res, next) => {
     let reply;
 
     try {
-        reply = await Reply.fetchOne(reply_id);
+        reply = await Reply.findReply(reply_id);
     } catch (err) {
         const error = new HttpError('삭제하려는 댓글이 존재하지 않습니다.', 500);
         return next(error);
