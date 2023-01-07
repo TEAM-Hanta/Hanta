@@ -32,7 +32,7 @@ router.get('/:pid/reply', replyController.getReply);
 // POST => api/posts/:pid/reply 댓글쓰기
 router.post('/:pid/reply', replyController.createReply);
 
-// POST => api/posts/reply2 대댓글쓰기
-router.post('/:pid/reply2', replyController.createReply2);
+// // POST => api/posts/reply2 대댓글쓰기
+// router.post('/:pid/reply2', replyController.createReply2);
 
 module.exports = router;

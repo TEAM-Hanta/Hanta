@@ -9,10 +9,10 @@ module.exports = class Reply {
         return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,last_insert_id() + 1,?,?)', [this.content, this.layer, this.post_id, this.user_id]);
     }
 
-    // 대댓글 작성
-    saveReply2() {
-        return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,?,?,?)', [this.content, this.layer, this.group, this.post_id, this.user_id]);
-    }
+    // // 대댓글 작성
+    // saveReply2() {
+    //     return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,?,?,?)', [this.content, this.layer, this.group, this.post_id, this.user_id]);
+    // }
 
     // 댓글 리스트
     static replyList(post_id) {

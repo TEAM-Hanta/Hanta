@@ -34,24 +34,24 @@ exports.createReply = async (req, res, next) => {
     });
 };
 
-// 대댓글 작성 - layer => 1 / 프론트에서 해당 그룹번호를 req로 전송
-exports.createReply2 = async (req, res, next) => {
-    const content = req.body.content;
-    const post_id = req.params.pid;
-    const user_id = req.userData.userId;
-    const group_id = req.body.id; // 댓글의 pk값을 대댓글의 그룹번호 값으로
+// // 대댓글 작성 - layer => 1 / 프론트에서 해당 그룹번호를 req로 전송
+// exports.createReply2 = async (req, res, next) => {
+//     const content = req.body.content;
+//     const post_id = req.params.pid;
+//     const user_id = req.userData.userId;
+//     const group_id = req.body.id; // 댓글의 pk값을 대댓글의 그룹번호 값으로
 
-    const createReply = new Reply(null, content, 1, group_id, post_id, user_id);
-    try {
-        await createReply.saveReply2();
-    } catch (err) {
-        const error = new HttpError('댓글이 작성되지 않았습니다.');
-        return next(error);
-    }
-    res.status(200).json({
-        message: '댓글이 작성되었습니다.',
-    });
-};
+//     const createReply = new Reply(null, content, 1, group_id, post_id, user_id);
+//     try {
+//         await createReply.saveReply2();
+//     } catch (err) {
+//         const error = new HttpError('댓글이 작성되지 않았습니다.');
+//         return next(error);
+//     }
+//     res.status(200).json({
+//         message: '댓글이 작성되었습니다.',
+//     });
+// };
 
 // 댓글 삭제
 exports.deleteReply = async (req, res, next) => {
