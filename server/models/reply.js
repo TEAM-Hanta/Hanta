@@ -4,7 +4,7 @@ module.exports = class Reply {
         (this.id = id), (this.content = content), (this.layer = layer), (this.group = group), (this.post_id = post_id), (this.user_id = user_id);
     }
 
-    // 댓글 작성 / group_id는 last_insert_id()+1로 pk값과 동일하게
+    // 댓글 작성 / group_id는 last_insert_id()+1로 pk값과 동일하게 - 수정 필요
     saveReply() {
         return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,last_insert_id() + 1,?,?)', [this.content, this.layer, this.post_id, this.user_id]);
     }
