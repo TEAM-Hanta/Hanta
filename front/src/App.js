@@ -6,7 +6,7 @@ import License from "./pages/license";
 import Mypage from "./pages/mypage";
 import Notice from "./pages/notice";
 import Write from "./pages/write";
-
+import Letter from "./pages/letter";
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/*" element={
           <div style={{fontSize:"50px", textAlign:"center"}}>잘못된 접근입니다.</div>
         } />
+        <Route path="/letter" element={<Letter/>} />
       </Routes> 
   );
 }

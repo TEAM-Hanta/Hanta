@@ -1,19 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Paper, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from 'tss-react/mui';
 import "../css/home.css"
 
-
-
-const Noticecp = makeStyles((theme) => ({
+const Noticecp = makeStyles()((theme) => ({
     paper: {
       padding: theme.spacing(1),
     },
   }));
 
 export default () => {
-    const classes = Noticecp();
+    const {classes} = Noticecp();
 
     return (
         <>
