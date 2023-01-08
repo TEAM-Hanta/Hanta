@@ -19,6 +19,9 @@ router.post('/', [body('title').isLength({ max: 30 }), body('content').isLength(
 // GET => api/posts/popular 인기글 목록
 router.get('/popular', postController.getPopularPosts);
 
+// GET => api/posts/search?result= 검색
+router.get('/search', postController.searchPost);
+
 // GET => api/posts/:pid 글번호가 특정하는 글 보기
 router.get('/:pid', postController.getPost);
 

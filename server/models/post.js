@@ -36,4 +36,9 @@ module.exports = class Post {
             'SELECT post.id,title,content,created_at,post.user_id FROM post JOIN like_count ON post.id = like_count.post_id GROUP BY like_count.post_id ORDER BY count(like_count.post_id) DESC LIMIT 0,10;'
         );
     }
+
+    // 쿼리스트링으로 검색
+    static findPost(keyword) {
+        return db.execute('SELECT * FROM post WHERE post.title LIKE ? OR post.content LIKE ?', [keyword, keyword]);
+    }
 };

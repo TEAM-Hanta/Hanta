@@ -112,3 +112,17 @@ exports.getPopularPosts = async (req, res, next) => {
     }
     res.status(200).json(popularPosts);
 };
+
+// 검색
+exports.searchPost = async (req, res, next) => {
+    let searchPost;
+    let keyword = req.query.result;
+    keyword = '%' + keyword + '%';
+    try {
+        [searchPost] = await Post.findPost(keyword);
+    } catch (err) {
+        const error = new HttpError('검색 실패', 500);
+        return next(error);
+    }
+    res.status(200).json(searchPost);
+};
