@@ -29,4 +29,11 @@ module.exports = class Post {
     static findMyPost(user_id) {
         return db.execute('SELECT * FROM post WHERE post.user_id = ?', [user_id]);
     }
+
+    // 인기글 목록 (상위 1O개)
+    static popularPost() {
+        return db.execute(
+            'SELECT post.id,title,content,created_at,post.user_id FROM post JOIN like_count ON post.id = like_count.post_id GROUP BY like_count.post_id ORDER BY count(like_count.post_id) DESC LIMIT 0,10;'
+        );
+    }
 };
