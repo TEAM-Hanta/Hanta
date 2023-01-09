@@ -32,13 +32,13 @@ router.delete('/:pid', postController.deletePost);
 router.get('/user/:uid', postController.getMyPost);
 
 // 댓글, 대댓글 ----
-// GET => api/posts/:pid/reply
+// GET => api/posts/:pid/reply 댓글 리스트
 router.get('/:pid/reply', replyController.getReply);
 
 // POST => api/posts/:pid/reply 댓글쓰기
 router.post('/:pid/reply', replyController.createReply);
 
 // // POST => api/posts/reply2 대댓글쓰기
-// router.post('/:pid/reply2', replyController.createReply2);
+router.post('/:pid/reply2', replyController.createReply2);
 
 module.exports = router;
