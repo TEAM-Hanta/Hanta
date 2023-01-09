@@ -9,11 +9,11 @@ function List(props) {
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
             <br></br>
-        <h4><FontAwesomeIcon icon="user" />{props.user}</h4>
+        <h4><FontAwesomeIcon icon="user" />{props.value.user}</h4>
         <Link to="/letter" style={{textDecoration:"none", color:"black", marginLeft:"20px"}}>
         {props.title}
         </Link>
-        <a style={{color:"lightgray", float:"right"}}>{props.date}</a>
+        <a style={{color:"lightgray", float:"right"}}>{props.value.date}</a>
         <div className="sibal">
             <Count/>
         </div>
