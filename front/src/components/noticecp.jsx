@@ -21,9 +21,9 @@ const Noticecp = (props) => {
         <div className="ct">
             <FontAwesomeIcon style={{float:"right", paddingRight:"10px"}} icon="x"/>
                 <ul>
-                    <li className="bd">{props.title}</li>
+                    <li className="bd">{props.value.title}</li>
                     <br/>
-                    <div style={{fontSize:"12px"}}>{props.date}</div>
+                    <div style={{fontSize:"12px"}}>{props.value.date}</div>
                 </ul>
             </div>
         </Typography>
