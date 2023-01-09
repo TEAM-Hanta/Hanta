@@ -11,6 +11,8 @@ const router = express.Router();
 // 유효 토큰 검증 미들웨어
 router.use(verifyToken);
 
+// ---- 글 ----
+
 // GET => api/posts/ 전체 글 목록
 router.get('/', postController.getPosts);
 
@@ -33,6 +35,7 @@ router.delete('/:pid', postController.deletePost);
 router.get('/user/:uid', postController.getMyPost);
 
 // ---- 댓글, 대댓글 ----
+
 // GET => api/posts/:pid/reply 댓글 리스트
 router.get('/:pid/reply', replyController.getReply);
 
@@ -43,10 +46,12 @@ router.post('/:pid/reply', replyController.createReply);
 router.post('/:pid/reply2', replyController.createReply2);
 
 // ---- 좋아요 ----
+
 // GET => api/posts/:pid/like
 router.get('/:pid/like', likeController.likeCounter);
 
 // ---- 신고 ----
+
 // GET => api/posts/:pid/report
 router.get('/:pid/report', reportController.report);
 
