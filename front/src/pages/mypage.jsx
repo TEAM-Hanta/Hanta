@@ -1,13 +1,22 @@
-import React from "react";
+import React, { Component, useState } from 'react';
 import Myletter from "../components/myletter";
 import "../css/write.css"
+import Modaly from "../components/modaly";
 
 function Mypage() {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+      setModalOpen(true);
+    };
+    const closeModal = () => {
+      setModalOpen(false);
+    };
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
                 <h1>마이페이지
-                <button className="button">로그아웃</button>
+                <button onClick={openModal} className="button">로그아웃</button>
                 </h1>
             </div>
 
@@ -24,6 +33,13 @@ function Mypage() {
             <div>
             <Myletter /><Myletter />
             </div>
+
+        <Modaly open={modalOpen} close={closeModal} header="Modal heading">
+        {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달 */}
+        {/* 팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+        </Modaly>
+
+
         </>
     );
 }

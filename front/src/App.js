@@ -7,6 +7,7 @@ import Mypage from "./pages/mypage";
 import Notice from "./pages/notice";
 import Write from "./pages/write";
 import Letter from "./pages/letter";
+import Modal from "./pages/modal";
 
 const App = () => {
   return (

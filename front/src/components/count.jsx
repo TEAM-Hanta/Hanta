@@ -6,7 +6,7 @@ import "../css/home.css"
 function Count() {
 
     let [up, down] = useState(0);
-    let [ lik, liks] = useState(3); /* 게시글 좋아요 갯수 */
+    let [ lik, liks] = useState(2); /* 게시글 좋아요 갯수 */
     let [ comment ] = useState(10); /* 해당 usestate 데이터는 서버에서 들고올것 */
 
     return (
