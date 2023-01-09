@@ -11,13 +11,13 @@ module.exports = class Reply {
             await db.execute('SET @last_group_id = (SELECT group_id FROM reply ORDER BY group_id DESC LIMIT 1)');
 
             try {
-                const result2 = await db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,@last_group_id+1,?,?)', [
+                const result = await db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,@last_group_id+1,?,?)', [
                     this.content,
                     this.layer,
                     this.post_id,
                     this.user_id,
                 ]);
-                return result2;
+                return result;
             } catch (err) {
                 return err;
             }
