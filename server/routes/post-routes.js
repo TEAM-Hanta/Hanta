@@ -4,6 +4,7 @@ const { body } = require('express-validator');
 const postController = require('../controllers/post-controller');
 const replyController = require('../controllers/reply-controller');
 const likeController = require('../controllers/like-controller');
+const reportController = require('../controllers/report-controller');
 const verifyToken = require('../middleware/verify-token');
 
 const router = express.Router();
