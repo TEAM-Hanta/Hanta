@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 function Login() {  
   
   const onSubmitHandler = (e) => {
-  const id = e.target.id.value;
+  const nickname = e.target.nickname.value;
   const password = e.target.password.value;
   fetch('http://localhost:8080/api/login', {
       method : 'POST',
@@ -14,7 +14,7 @@ function Login() {
           'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          id,
+          nickname,
           password,
       }),
   });
@@ -22,7 +22,7 @@ function Login() {
     return(
    <div>
     <form onSubmit={onSubmitHandler}>
-     Emaill<input description="Email" placeholder="이메일을 입력하세요" type="text" name="id"/>
+     NickName<input description="NickName" placeholder="이메일을 입력하세요" type="text" name="nickname"/>
      <br/>
      PassWord<input description="Password" placeholder="비밀번호를 입력하세요" type="password" name="password"/>
      <button className="button">로그인</button>

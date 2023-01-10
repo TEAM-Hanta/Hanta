@@ -8,11 +8,13 @@ import Notice from "./pages/notice";
 import Write from "./pages/write";
 import Letter from "./pages/letter";
 import Login from "./pages/user/login";
+import Signup from "./pages/user/signup";
 
 const App = () => {
   return (
       <Routes> 
         <Route path="/" element={<Login/>} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/license" element={<License/>} />
         <Route path="/notice" element={<Notice/>} />
