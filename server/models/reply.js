@@ -5,14 +5,27 @@ module.exports = class Reply {
     }
 
     // 댓글 작성 / group_id는 last_insert_id()+1로 pk값과 동일하게 - 수정 필요
-    saveReply() {
-        return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,last_insert_id() + 1,?,?)', [this.content, this.layer, this.post_id, this.user_id]);
-    }
+    async saveReply() {
+        if (this.layer == 0) {
+            // 댓글이라면
+            await db.execute('SET @last_group_id = (SELECT group_id FROM reply ORDER BY group_id DESC LIMIT 1)');
 
-    // // 대댓글 작성
-    // saveReply2() {
-    //     return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,?,?,?)', [this.content, this.layer, this.group, this.post_id, this.user_id]);
-    // }
+            try {
+                const result = await db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,@last_group_id+1,?,?)', [
+                    this.content,
+                    this.layer,
+                    this.post_id,
+                    this.user_id,
+                ]);
+                return result;
+            } catch (err) {
+                return err;
+            }
+        } else {
+            // 대댓글이라면
+            return db.execute('INSERT INTO reply (content,layer,group_id, post_id,user_id) VALUES (?,?,?,?,?)', [this.content, this.layer, this.group, this.post_id, this.user_id]);
+        }
+    }
 
     // 댓글 리스트
     static replyList(post_id) {

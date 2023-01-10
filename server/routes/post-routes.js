@@ -3,12 +3,16 @@ const { body } = require('express-validator');
 
 const postController = require('../controllers/post-controller');
 const replyController = require('../controllers/reply-controller');
+const likeController = require('../controllers/like-controller');
+const reportController = require('../controllers/report-controller');
 const verifyToken = require('../middleware/verify-token');
 
 const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
 router.use(verifyToken);
+
+// ---- 글 ----
 
 // GET => api/posts/ 전체 글 목록
 router.get('/', postController.getPosts);
@@ -31,14 +35,25 @@ router.delete('/:pid', postController.deletePost);
 // GET => api/posts/user/:uid 해당하는 사용자 id가 쓴 글 목록 - 마이페이지
 router.get('/user/:uid', postController.getMyPost);
 
-// 댓글, 대댓글 ----
-// GET => api/posts/:pid/reply
+// ---- 댓글, 대댓글 ----
+
+// GET => api/posts/:pid/reply 댓글 리스트
 router.get('/:pid/reply', replyController.getReply);
 
 // POST => api/posts/:pid/reply 댓글쓰기
 router.post('/:pid/reply', replyController.createReply);
 
 // // POST => api/posts/reply2 대댓글쓰기
-// router.post('/:pid/reply2', replyController.createReply2);
+router.post('/:pid/reply2', replyController.createReply2);
+
+// ---- 좋아요 ----
+
+// GET => api/posts/:pid/like
+router.get('/:pid/like', likeController.likeCounter);
+
+// ---- 신고 ----
+
+// GET => api/posts/:pid/report
+router.get('/:pid/report', reportController.report);
 
 module.exports = router;
