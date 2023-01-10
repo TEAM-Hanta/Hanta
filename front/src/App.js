@@ -11,6 +11,7 @@ import Modal from "./pages/modal";
 
 const App = () => {
   return (
+    <div className="App">
       <Routes> 
         <Route path="/" element={
            <img style={{paddingLeft:"41%", paddingTop:"13%"}} alt="bg" src="img/bg.png" />
@@ -25,6 +26,7 @@ const App = () => {
         } />
         <Route path="/letter" element={<Letter/>} />
       </Routes> 
+      </div>
   );
 }
 
