@@ -4,16 +4,16 @@ import Count from "./count";
 import "../css/home.css"
 import { Link } from "react-router-dom";
 
-function List() {
+function List(props) {
     return (
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
             <br></br>
-        <h4><FontAwesomeIcon icon="user" />익명</h4>
+        <h4><FontAwesomeIcon icon="user" />{props.value.user}</h4>
         <Link to="/letter" style={{textDecoration:"none", color:"black", marginLeft:"20px"}}>
-        안녕하세요. 첫글이네요
+        {props.title}
         </Link>
-        <a style={{color:"lightgray", float:"right"}}>2023.06.04</a>
+        <a style={{color:"lightgray", float:"right"}}>{props.value.date}</a>
         <div className="sibal">
             <Count/>
         </div>

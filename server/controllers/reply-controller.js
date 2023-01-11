@@ -1,5 +1,7 @@
 const HttpError = require('../models/http-error');
+const Notice = require('../models/notice');
 const Reply = require('../models/reply');
+const Post = require('../models/post');
 
 // 댓글 리스트
 exports.getReply = async (req, res, next) => {
@@ -21,6 +23,17 @@ exports.createReply = async (req, res, next) => {
     const post_id = req.params.pid;
     const user_id = req.userData.userId;
 
+    let title;
+    let postOne;
+    const url = 'http://localhost:3000/posts/' + post_id;
+
+    try {
+        [postOne] = await Post.fetchOne(post_id);
+    } catch (err) {
+        const error = new HttpError('글을 찾지 못했습니다.', 500);
+        return next(error);
+    }
+
     const createReply = new Reply(null, content, 0, null, post_id, user_id);
     try {
         await createReply.saveReply();
@@ -29,21 +42,36 @@ exports.createReply = async (req, res, next) => {
         const error = new HttpError('댓글이 작성되지 않았습니다.');
         return next(error);
     }
+
+    // 댓글이 작성되면 댓글 알림 DB에도 저장되어야 함
+
+    const author_id = postOne[0].user_id; // 글쓴이
+    title = postOne[0].title;
+    title = title.slice(0, 5) + '...';
+
+    const notice = new Notice(null, author_id, '"' + title + '"' + ' 글에 댓글이 달렸습니다.', url);
+
+    try {
+        await notice.save();
+    } catch (err) {
+        const error = new HttpError('댓글 알림 저장 실패', 500);
+        return next(error);
+    }
     res.status(200).json({
-        message: '댓글이 작성되었습니다.',
+        message: '댓글 작성, 알림 저장 성공',
     });
 };
 
-// 대댓글 작성 - layer => 1 / 프론트에서 해당 그룹번호를 req로 전송
+// // 대댓글 작성 - layer => 1 / 프론트에서 해당 그룹번호를 req로 전송
 exports.createReply2 = async (req, res, next) => {
     const content = req.body.content;
     const post_id = req.params.pid;
     const user_id = req.userData.userId;
-    const group_id = req.body.id; // 댓글의 pk값을 대댓글의 그룹번호 값으로
+    const group_id = req.body.id; // 댓글의 그룹번호 값 == 대댓글의 그룹번호 값
 
     const createReply = new Reply(null, content, 1, group_id, post_id, user_id);
     try {
-        await createReply.saveReply2();
+        await createReply.saveReply();
     } catch (err) {
         const error = new HttpError('댓글이 작성되지 않았습니다.');
         return next(error);

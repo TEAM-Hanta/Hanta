@@ -37,9 +37,9 @@ exports.createPost = async (req, res, next) => {
         return next(error);
     }
 
-    const { title, content } = req.body;
+    const { title, content, post_type } = req.body;
 
-    const createPost = new Post(null, title, content, req.userData.userId);
+    const createPost = new Post(null, title, content, req.userData.userId, post_type);
 
     try {
         await createPost.save();
@@ -99,4 +99,30 @@ exports.getMyPost = async (req, res, next) => {
         return next(error);
     }
     res.status(200).json(getMyPost[0]);
+};
+
+// 인기글 목록
+exports.getPopularPosts = async (req, res, next) => {
+    let popularPosts;
+    try {
+        [popularPosts] = await Post.popularPost();
+    } catch (err) {
+        const error = new HttpError('글을 불러오지 못했습니다.', 500);
+        return next(error);
+    }
+    res.status(200).json(popularPosts);
+};
+
+// 검색
+exports.searchPost = async (req, res, next) => {
+    let searchPost;
+    let keyword = req.query.result;
+    keyword = '%' + keyword + '%';
+    try {
+        [searchPost] = await Post.findPost(keyword);
+    } catch (err) {
+        const error = new HttpError('검색 실패', 500);
+        return next(error);
+    }
+    res.status(200).json(searchPost);
 };

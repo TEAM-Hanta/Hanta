@@ -8,14 +8,15 @@ import Notice from "./pages/notice";
 import Write from "./pages/write";
 import Letter from "./pages/letter";
 import Modal from "./pages/modal";
+import Login from "./pages/user/login";
+import Signup from "./pages/user/signup";
 
 const App = () => {
   return (
     <div className="App">
       <Routes> 
-        <Route path="/" element={
-           <img style={{paddingLeft:"41%", paddingTop:"13%"}} alt="bg" src="img/bg.png" />
-        } />
+        <Route path="/" element={<Login/>} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/license" element={<License/>} />
         <Route path="/notice" element={<Notice/>} />
@@ -32,3 +33,4 @@ const App = () => {
 
 export default App;
 
+// /home은 /로 이전시키고 홈페이지 이외의 페이지에서 접속시 미 로그인시 로그인창 띄우기

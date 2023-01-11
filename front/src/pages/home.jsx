@@ -1,8 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React,{ useEffect,useState } from "react";
 import List from "../components/list";
 
 function Home() {
+  
+    const [list,setList] = useState([{id: 1, user:"홍길동", title:"안녕하세요",date:"어제"},{id: 2, user:"엄길동", title:"안녕하세요",date:"오늘"}]);
+  
+    useEffect(() => {
+        fetch('https://localhost:8080/api/posts/')  //home이 아니라 게시판임
+        .then((response) => response.json())
+        .then((data) => setList(data))
+        .catch(rejected => {
+          console.log(rejected);
+        });
+    },  []);
+
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
@@ -16,7 +28,11 @@ function Home() {
                 </div>
                 {/*차후 컨포넌트로 리스트 만들예정*/}
             </div>
-            <List /><List /><List /><List /><List />
+            {list?.map((props) => (
+            <div key={props.id}>
+             <List value = {props}/>
+            </div>
+        ))};
         </>
     );
 }
