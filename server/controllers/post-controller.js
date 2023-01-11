@@ -39,8 +39,8 @@ exports.createPost = async (req, res, next) => {
 
     const { title, content, post_type } = req.body;
 
-    const createPost = new Post(null, title, content, req.userData.userId, post_type);
-
+    const createPost = new Post(null, title, content, '1212', post_type);
+// req.userData.userId
     try {
         await createPost.save();
     } catch (err) {

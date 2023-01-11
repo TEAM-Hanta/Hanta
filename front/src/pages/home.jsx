@@ -4,10 +4,10 @@ import List from "../components/list";
 
 function Home() {
   
-    const [list,setList] = useState([{id: 1, user:"홍길동", title:"안녕하세요",date:"어제"},{id: 2, user:"엄길동", title:"안녕하세요",date:"오늘"}]);
+    const [list,setList] = useState([]);
   
     useEffect(() => {
-        fetch('https://localhost:8080/api/posts/')  //home이 아니라 게시판임
+        fetch('http://localhost:8080/api/posts/')  //home이 아니라 게시판임
         .then((response) => response.json())
         .then((data) => setList(data))
         .catch(rejected => {

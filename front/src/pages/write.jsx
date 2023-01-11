@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../css/write.css"
 
-function Write() {
+function Write() { 
 
   const onSubmitHandler = (e) => {
       const title = e.target.title.value;
-      const post_content = e.target.post_content.value;
+      const content = e.target.content.value;
+      const post_type = '자유'; //라디오 버튼으로 게시판 추가하기
       fetch('http://localhost:8080/api/posts/', {
           method : 'POST',
           headers: {
@@ -13,7 +14,8 @@ function Write() {
           },
           body: JSON.stringify({
               title,
-              post_content,
+              content,
+              post_type,
           }),
       });
   };
@@ -32,7 +34,7 @@ function Write() {
             </div>
         
             <div>
-        <textarea id='content_txt' placeholder='글을 작성해보세요.' name="post_content"/>
+        <textarea id='content_txt' placeholder='글을 작성해보세요.' name="content"/>
             </div>
         </div>
          </form>  

@@ -9,11 +9,13 @@ function List(props) {
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
             <br></br>
-        <h4><FontAwesomeIcon icon="user" />{props.value.user}</h4>
+        <h4><FontAwesomeIcon icon="user" />{props.value.user_id}</h4>
         <Link to="/letter" style={{textDecoration:"none", color:"black", marginLeft:"20px"}}>
-        {props.title}
+        {props.value.title}
+        <br></br>
+        {props.value.content}
         </Link>
-        <a style={{color:"lightgray", float:"right"}}>{props.value.date}</a>
+        <a style={{color:"lightgray", float:"right"}}>{props.value.created_at}</a>
         <div className="sibal">
             <Count/>
         </div>
@@ -25,4 +27,4 @@ function List(props) {
 export default List;
 
 
-{/*홈 페이지에 있는 리스트 형태의 글을 컴포넌트로 다시 수정 할예정*/}   
+/*홈 페이지에 있는 리스트 형태의 글을 컴포넌트로 다시 수정 할예정*/
