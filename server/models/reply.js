@@ -29,7 +29,7 @@ module.exports = class Reply {
 
     // 댓글 리스트
     static replyList(post_id) {
-        return db.execute('SELECT * from reply WHERE post_id = ?', [post_id]);
+        return db.execute('SELECT content,created_at,layer,group_id,anonymous,nickname FROM hanta.reply JOIN user ON reply.user_id = user.id AND post_id = ?', [post_id]);
     }
 
     // 댓글 삭제 - db에서 삭제 대신 내용 변경으로

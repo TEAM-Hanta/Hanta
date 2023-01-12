@@ -12,7 +12,7 @@ module.exports = class Post {
 
     // 전체 글 리스트 출력하기
     static fetchAll() {
-        return db.execute('SELECT * FROM post');
+        return db.execute('SELECT post_type,title,content,created_at,nickname,anonymous FROM post JOIN user ON post.user_id = user.id ORDER BY created_at DESC');
     }
 
     // post_id에 해당하는 글 상세보기
