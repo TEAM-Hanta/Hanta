@@ -1,4 +1,8 @@
 import React from 'react';
+import "../../css/signup.css"
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
@@ -22,15 +26,23 @@ function signUp() {
     };
     return (
     <>
+    <Card className='fuck' style={{ width: '300px', height:"550px" }}>
+     <ListGroup variant="flush">
+
      <form onSubmit={onSubmitHandler}>
+        <div className='inputking'> 
+        <img style={{width:"230px", height:"200px" }} alt="intro" src="img/intro.png"/>
+        <input className='input' type='nickname' id='title_txt' placeholder=' 아이디' name="id"/>
+        <input className='input' type='nickname' id='title_txt' placeholder=' 닉네임' name="nickname"/>
+        <input className='input' type='password' id='title_txt' placeholder=' 비밀번호' name="password"/>
+        <input className='input' type='password' id='title_txt' placeholder=' 비밀번호 확인' name="password"/>
+        <input className='input' type='major' id='title_txt' placeholder=' c전공학과' name="major"/>
+        <button className="button">회원가입</button>
+        </div>
+         </form>
+         </ListGroup>
+         </Card>
         
-         
-        <input type='nickname' id='title_txt' placeholder='닉네임' name="nickname"/>
-        <input type='password' id='title_txt' placeholder='비밀번호' name="password"/>
-        <input type='major' id='title_txt' placeholder='전공학과' name="major"/>
-        <button className="button">회원가입</button>   
-     
-         </form>  
     </>
     );
 }
