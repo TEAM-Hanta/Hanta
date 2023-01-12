@@ -20,7 +20,7 @@ function Write() {
     return (
         <>
          <form onSubmit={onSubmitHandler}>
-        <div style={{paddingLeft:"15%"}}>
+        <div style={{paddingLeft:"15%", paddingRight:"15%"}}>
         <h1><FontAwesomeIcon icon="arrow-left"/>
         
         <button className="button">올리기</button>

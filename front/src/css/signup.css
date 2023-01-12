@@ -1,11 +1,13 @@
 .input {
     margin: 5px;
+    padding: 0px;
 }
 
 .fuck {
     text-align : center;
     margin : 0 auto;
-    margin-top: 50px;
+    margin-top: 60px;
+    border: none;
 }
 
 .inputking {

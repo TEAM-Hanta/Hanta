@@ -14,8 +14,8 @@ function Mypage() {
     };
     return (
         <>
-            <div style={{paddingLeft:"15%"}}>
-                <h1>마이페이지
+            <div>
+                <h1 style={{paddingLeft:"15%", paddingRight:"15%"}}>마이페이지
                 <button onClick={openModal} className="button">로그아웃</button>
                 </h1>
             </div>

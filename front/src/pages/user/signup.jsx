@@ -26,7 +26,7 @@ function signUp() {
     };
     return (
     <>
-    <Card className='fuck' style={{ width: '300px', height:"550px" }}>
+    <Card className='fuck' style={{ width: '350px', height:"550px" }}>
      <ListGroup variant="flush">
 
      <form onSubmit={onSubmitHandler}>
@@ -36,7 +36,7 @@ function signUp() {
         <input className='input' type='nickname' id='title_txt' placeholder=' 닉네임' name="nickname"/>
         <input className='input' type='password' id='title_txt' placeholder=' 비밀번호' name="password"/>
         <input className='input' type='password' id='title_txt' placeholder=' 비밀번호 확인' name="password"/>
-        <input className='input' type='major' id='title_txt' placeholder=' c전공학과' name="major"/>
+        <input className='input' type='major' id='title_txt' placeholder=' 전공학과' name="major"/>
         <button className="button">회원가입</button>
         </div>
          </form>
