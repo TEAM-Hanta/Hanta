@@ -2,7 +2,6 @@ import { getTableHeadUtilityClass } from "@mui/material";
 import React from "react";
 
 //import Fallback from "./Fallback";
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -27,14 +26,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       // 폴백 UI를 커스텀하여 렌더링할 수 있습니다.
       //return <Fallback />;
-      return (
-        <div>
-        <h2>Something went wrong.</h2>
-          {this.state.error && this.state.error.toString()}
-          <br />
-          {this.state.errorInfo.componentStack}
-      </div>
-        );
+      return (<h2>Something went wrong.</h2>);
     }
 
     return this.props.children;
