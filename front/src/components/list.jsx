@@ -9,13 +9,13 @@ function List(props) {
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
             <br></br>
-        <h4><FontAwesomeIcon icon="user" />{props.value.user_id}</h4>
+        <h4><FontAwesomeIcon icon="user" />{props.value.anonymous === 1 ? '익명' : props.value.nickname}</h4>
         <Link to="/letter" style={{textDecoration:"none", color:"black", marginLeft:"20px"}}>
         {props.value.title}
         <br></br>
         {props.value.content}
         </Link>
-        <a style={{color:"lightgray", float:"right"}}>{props.value.created_at}</a>
+        <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("en-US",{timeZone:'UTC'})}</a>
         <div className="sibal">
             <Count/>
         </div>
