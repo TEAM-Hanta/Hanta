@@ -19,7 +19,7 @@ exports.getReply = async (req, res, next) => {
 
 // 댓글 작성 - layer => 0
 exports.createReply = async (req, res, next) => {
-    const content = req.body.content;
+    const { content, anonymous } = req.body;
     const post_id = req.params.pid;
     const user_id = req.userData.userId;
 
@@ -34,7 +34,7 @@ exports.createReply = async (req, res, next) => {
         return next(error);
     }
 
-    const createReply = new Reply(null, content, 0, null, post_id, user_id);
+    const createReply = new Reply(null, content, 0, null, post_id, user_id, anonymous);
     try {
         await createReply.saveReply();
     } catch (err) {

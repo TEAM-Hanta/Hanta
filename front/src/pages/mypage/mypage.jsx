@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
-import Myletter from "../components/myletter";
+import Myletter from "./myletter";
 import "../css/write.css"
-import Modaly from "../components/modaly";
+import Modaly from "./modaly";
 
 function Mypage() {
     const [modalOpen, setModalOpen] = useState(false);

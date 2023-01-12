@@ -1,6 +1,5 @@
 import React from 'react';
-import "../../css/signup.css"
-import Form from 'react-bootstrap/Form';
+import "./signup.css"
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 

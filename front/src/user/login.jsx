@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'; 
-import "../../css/login.css"
+import "./login.css"
 
   
 
@@ -24,9 +24,9 @@ function Login() {
    <div className="loginy">
     <img style={{width:"200px", height:"200px", paddingBottom:"20px"}} alt="bg" src="img/jolla.png"/>
     <form onSubmit={onSubmitHandler}>
-     <input className="input" description="NickName" placeholder=" 아이디" type="text" name="nickname"/>
+     <input className="input" style={{fontSize:"22px"}} description="NickName" placeholder=" 아이디" type="text" name="nickname"/>
      <br/>
-     <input className="input" description="Password" placeholder=" 비밀번호" type="password" name="password"/>
+     <input className="input" style={{fontSize:"22px"}} description="Password" placeholder=" 비밀번호" type="password" name="password"/>
      <OtherMethods/>
      </form>
    </div>

@@ -1,4 +1,5 @@
 import { React, Component} from 'react';
+import "../css/modal.css"
 
 export default class Modaly extends Component {
   render() {

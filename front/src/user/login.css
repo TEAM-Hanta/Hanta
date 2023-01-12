@@ -1,5 +1,4 @@
 .loginy {
-    font-size: 30px;
     text-align: center;
     padding-top: 120px;
 }
@@ -8,9 +7,8 @@
     border: none;
     border-radius: 10px;
     background-color: lightgray;
-    margin-bottom: 10px;
-    
-   
+    font-weight: bold;
+    padding-bottom: 10px;
 }
 
 .link {
@@ -28,26 +26,29 @@
 }
 
 .sibar {
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: gray;
-    margin-top: 15px;
+    margin-top: 30px;
     background-color: lightgray;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .sibar:hover {
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: black;
-    margin-top: 15px;
+    margin-top: 30px;
     background-color: gray;
 }
 
 
 .alternativeLogin {
     text-align: center;
+    padding-top: 15px;
 }
