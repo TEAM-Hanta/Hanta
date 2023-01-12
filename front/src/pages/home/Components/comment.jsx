@@ -12,8 +12,7 @@ function Comment() {
                 <button>댓글작성</button>
             </div>
         </h4>
-        <div style={{marginLeft:"20px"}}>
-        하이루~
+        <div style={{marginLeft:"20px"}}>배고파
         <a style={{color:"lightgray", float:"right"}}>2023.06.04</a>
         </div>
 
