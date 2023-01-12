@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "../css/home.css"
+import "../../css/home.css"
 
 function Comment() {
     return (
