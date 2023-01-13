@@ -1,22 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from 'react';
 import "../css/home.css"
-import List from "./Components/list";
 import Comment from "./Components/comment";
+import { useLocation } from "react-router-dom";
 
-function Letter() {
+
+function Detailpost() {
+    const location = useLocation();
+    console.log(location)
     return (
         <>
         <div style={{paddingLeft:"15%"}}>
         <h1><FontAwesomeIcon icon="arrow-left"/>
         <div style={{float:"right", paddingRight:"20%"}}>
-        </div>
+        </div> {location.state.id}번 게시물
         </h1>
         </div>
         <br/>
 
         <div className="letter">
-        <List/>
         </div>
 
         <Comment/>
@@ -26,4 +28,4 @@ function Letter() {
     );
 }
 
-export default Letter;
+export default Detailpost;

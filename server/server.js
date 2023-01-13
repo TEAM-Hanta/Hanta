@@ -34,28 +34,5 @@ app.use((error, req, res, next) => {
     res.json({ message: error.message || '알 수 없는 오류가 발생했습니다.' });
 });
 
-let id = 2;
-const todoList = [
-{
-    id : 1,
-    text :  '할일1',
-    done : 'fuck',
-},
-];
-
-app.get('/add',(req,res)=> {
-    res .json(todoList);
-});
-
-app.post('/add',(req,res) =>{
-    const {text, done} = req.body;
-    todoList.push({
-        id: id++,
-        text,
-        done,
-    });
-    console.log('됬음')
-    return res.send('success');
-});
 
 app.listen(8080);

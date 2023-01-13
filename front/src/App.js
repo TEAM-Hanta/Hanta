@@ -4,7 +4,7 @@ import "./App.css";
 //홈페이지 이하 
 import Home from "./pages/home/home"; //홈페이지
 import Board from "./pages/home/boardlist"; //개별게시판
-import Letter from "./pages/home/detailpost";  //상세 게시물
+import Detail from "./pages/home/detailpost";  //상세 게시물
 //자격증 이하
 import License from "./pages/license/license"; //자격증
 //마이페이지 이하
@@ -37,7 +37,7 @@ const App = () => {
 
         <Route path="/write" element={<Write/>} />
 
-        <Route path="/letter" element={<Letter/>} />
+        <Route path="/detail/:id" element={<Detail/>} />
 
         <Route path="/*" element={
           <div style={{fontSize:"50px", textAlign:"center"}}>잘못된 접근입니다.</div>

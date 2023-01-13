@@ -13,6 +13,7 @@ function BoardList() {
           console.log(rejected);
         });
     },  []);
+    console.log(list)
 
     return (
         <>
