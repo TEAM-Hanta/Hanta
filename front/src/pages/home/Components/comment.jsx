@@ -22,7 +22,11 @@ function Comment() {
         
 
         <div>
-            <h4><FontAwesomeIcon icon="user" />익명(글쓴이)</h4>
+            <h4 style={{paddingTop:"20px"}}><FontAwesomeIcon icon="user" />익명(글쓴이)
+            <div style={{float:"right"}}>
+                <button>댓글작성</button>
+            </div>
+            </h4>
                 <div style={{marginLeft:"20px"}}>
                     ㅗ
                     <a style={{color:"white", float:"right"}}>2023.06.04</a>

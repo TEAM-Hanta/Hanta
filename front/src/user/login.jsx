@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from 'react-router-dom' 
+import {Link} from 'react-router-dom'; 
+import "./login.css"
 
   
 
@@ -20,12 +21,12 @@ function Login() {
   });
 };
     return(
-   <div>
+   <div className="loginy">
+    <img style={{width:"200px", height:"200px", paddingBottom:"20px"}} alt="bg" src="img/jolla.png"/>
     <form onSubmit={onSubmitHandler}>
-     NickName<input description="NickName" placeholder="이메일을 입력하세요" type="text" name="nickname"/>
+     <input className="input" style={{fontSize:"22px"}} description="NickName" placeholder=" 아이디" type="text" name="nickname"/>
      <br/>
-     PassWord<input description="Password" placeholder="비밀번호를 입력하세요" type="password" name="password"/>
-     <button className="button">로그인</button>
+     <input className="input" style={{fontSize:"22px"}} description="Password" placeholder=" 비밀번호" type="password" name="password"/>
      <OtherMethods/>
      </form>
    </div>
@@ -35,7 +36,9 @@ function Login() {
 
 const OtherMethods = props => (
   <div className="alternativeLogin">                
-    <label><Link to="/signUp" className="link">회원이 아니신가요?</Link></label>        
+    <label><Link to="/signUp" className="link">회원이 아니신가요?</Link></label>
+    <br/>
+    <button className="sibar">로그인</button>        
     </div> 
 );
 

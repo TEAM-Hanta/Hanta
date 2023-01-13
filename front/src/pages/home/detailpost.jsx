@@ -9,9 +9,10 @@ function Letter() {
         <>
         <div style={{paddingLeft:"15%"}}>
         <h1><FontAwesomeIcon icon="arrow-left"/>
-        <FontAwesomeIcon style={{float:"right", paddingRight:"20%"}} icon="ellipsis-vertical"/></h1>
+        <div style={{float:"right", paddingRight:"20%"}}>
         </div>
-
+        </h1>
+        </div>
         <br/>
 
         <div className="letter">
@@ -19,8 +20,6 @@ function Letter() {
         </div>
 
         <Comment/>
-
-
 
 
         </>

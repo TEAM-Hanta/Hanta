@@ -20,6 +20,7 @@ import Signup from "./user/signup"; //회원가입
 
 const App = () => {
   return (
+    <div className="App">
       <Routes> 
         <Route path="/home" element={<Home/>} />
         <Route path="/boardlist" element={<Board/>} />
@@ -42,6 +43,7 @@ const App = () => {
           <div style={{fontSize:"50px", textAlign:"center"}}>잘못된 접근입니다.</div>
         } />
       </Routes> 
+      </div>
   );
 }
 

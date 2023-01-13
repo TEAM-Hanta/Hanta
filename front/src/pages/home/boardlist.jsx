@@ -17,7 +17,7 @@ function BoardList() {
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
-                <h1>게시판</h1>
+                <h1>게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
             </div>
             <div style={{paddingLeft:"15%"}}>
                 <div>
