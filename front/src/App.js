@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/boardlist" element={<Board/>} />
 
 
-        <Route path="/" element={<Login/>} />    
+        <Route path="/" element={<Login/>} />     {/* 추후 home주소로 등록시키고 미 로그인시 접근할때 로그인창이 뜨도록 하기 */}
         <Route path="/signup" element={<Signup/>} />    
 
         <Route path="/license" element={<License/>} />

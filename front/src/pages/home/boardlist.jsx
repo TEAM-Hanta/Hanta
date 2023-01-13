@@ -3,7 +3,6 @@ import React,{ useEffect,useState } from "react";
 import List from "./Components/list";
 
 function BoardList() {
-  
     const [list,setList] = useState([]);
   
     useEffect(() => {

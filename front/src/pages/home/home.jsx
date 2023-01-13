@@ -7,7 +7,7 @@ function Home (){
     <>
     <h2>홈</h2>
 
-    <Link to="/boardlist" className="link"> 전체 게시판 </Link>
+    <Link to="/boardlist" className="link"  > 전체 게시판 </Link>
     </>
 
     )
