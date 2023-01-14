@@ -5,6 +5,7 @@ import "../../css/home.css"
 import { Link } from "react-router-dom";
 
 function List(props) {
+    const coment = props.value.content.substr(0,5);
     return (
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
@@ -16,9 +17,9 @@ function List(props) {
                 {props.value.title}
         
                 <br></br>
-                {props.value.content}
+                {coment}... {/* 내용 축약 시켜서 내보내기 */}
                 
-                <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("en-US",{timeZone:'UTC'})}</a>
+                <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("ko-KR",{timeZone:'UTC'})}</a>
                 <div className="sibal">
                     <Count value ={{likes : props.value.like_count,reply : props.value.reply_count}}/>
                 </div>

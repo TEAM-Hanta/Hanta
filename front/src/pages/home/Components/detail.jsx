@@ -1,9 +1,31 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React,{ useEffect,useState } from "react";
+import { useParams } from "react-router-dom";
 import "../../css/home.css"
-import Comment from "./comment";
+import Reply from "./reply";
 
 function Detail(props) {
+    
+    const params = useParams(); //상세주소 게시물 번호들고오기
+    const [reply,setReply] = useState([]);
+
+    console.log(params)
+    
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/posts/${params.id}/reply`)  //리플 소환
+        .then((response) => response.json())
+        .then((data) => setReply(data))
+        .catch(rejected => {
+          console.log(rejected);
+        });
+    },  []);
+
+    reply.sort((a, b) => {
+        if (a.group_id < b.group_id) return -1;
+        if (a.group_id > b.group_id) return 1;
+    
+        return 0;
+    });
    
     return (
         <>
@@ -30,8 +52,9 @@ function Detail(props) {
         <div className="letter">
         </div>
 
-        <Comment/>
-
+        <div> {/*댓글 영역 */}
+            <Reply value = {reply}/>
+        </div>
 
         </>
     );

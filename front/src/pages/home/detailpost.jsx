@@ -5,7 +5,6 @@ import Detail from "./Components/detail";
 function Detailpost() {
     const params = useParams(); //상세주소 게시물 번호들고오기
     const [post,setPost] = useState([]);
-    console.log(params)
     
     useEffect(() => {
         fetch(`http://localhost:8080/api/posts/${params.id}`)  //게시물 소환 api/posts/:pid${params.id}
@@ -15,11 +14,10 @@ function Detailpost() {
           console.log(rejected);
         });
     },  []);
-    console.log(post)
     return (
         <> 
         {post?.map((props) => (
-            <div key={props.index}>
+            <div key={props.id}>
              <Detail value = {props}/>
             </div>
         ))};

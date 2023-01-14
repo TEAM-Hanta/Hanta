@@ -2,13 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "../../css/home.css"
 
-//작업시작
-
-function Comment() {
+function Reply2() {
     return (
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}}>
-
             <br></br>
         <h4><FontAwesomeIcon icon="user" />익명2
             <div style={{float:"right"}}>
@@ -43,4 +40,4 @@ function Comment() {
     );
 }
 
-export default Comment;
+export default Reply2;
