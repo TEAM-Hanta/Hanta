@@ -5,23 +5,25 @@ import "../../css/home.css"
 import { Link } from "react-router-dom";
 
 function List(props) {
-    console.log(props);
     return (
         <>
         <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
-            <br></br>
-        <h4><FontAwesomeIcon icon="user" />{props.value.anonymous === 1 ? '익명' : props.value.nickname}</h4>
-        <Link to={'/detail/' + props.value.id} state={{id: props.value.id}}>
-        {props.value.title}
-        </Link>
-        <br></br>
-        {props.value.content}
-        {props.value.id} {/*임시*/}
+        <Link to={'/detail/' + props.value.id} >
+            <div> 
+                <br></br>
+                <h4><FontAwesomeIcon icon="user" />{props.value.anonymous === 1 ? '익명' : props.value.nickname}</h4>
         
-        <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("en-US",{timeZone:'UTC'})}</a>
-        <div className="sibal">
-            <Count/>
-        </div>
+                {props.value.title}
+        
+                <br></br>
+                {props.value.content}
+                
+                <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("en-US",{timeZone:'UTC'})}</a>
+                <div className="sibal">
+                    <Count value ={{likes : props.value.like_count,reply : props.value.reply_count}}/>
+                </div>
+            </div>   
+        </Link>
         </div>
         </>
     );

@@ -1,29 +1,28 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from 'react';
-import "../css/home.css"
-import Comment from "./Components/comment";
-import { useLocation } from "react-router-dom";
-
+import React,{ useEffect,useState } from "react";
+import { useParams } from "react-router-dom";
+import Detail from "./Components/detail";
 
 function Detailpost() {
-    const location = useLocation();
-    console.log(location)
+    const params = useParams(); //상세주소 게시물 번호들고오기
+    const [post,setPost] = useState([]);
+    console.log(params)
+    
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/posts/${params.id}`)  //게시물 소환 api/posts/:pid${params.id}
+        .then((response) => response.json())
+        .then((data) => setPost(data))
+        .catch(rejected => {
+          console.log(rejected);
+        });
+    },  []);
+    console.log(post)
     return (
-        <>
-        <div style={{paddingLeft:"15%"}}>
-        <h1><FontAwesomeIcon icon="arrow-left"/>
-        <div style={{float:"right", paddingRight:"20%"}}>
-        </div> {location.state.id}번 게시물
-        </h1>
-        </div>
-        <br/>
-
-        <div className="letter">
-        </div>
-
-        <Comment/>
-
-
+        <> 
+        {post?.map((props) => (
+            <div key={props.index}>
+             <Detail value = {props}/>
+            </div>
+        ))};
         </>
     );
 }

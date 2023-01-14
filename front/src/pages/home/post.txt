@@ -1,4 +1,4 @@
-home => boardlist(list,count) =>detailpost(comment)
+home => boardlist(list(count)) =>detailpost(detail(comment))
 홈 =>  (종류)게시판  => 상세게시물
 
 
