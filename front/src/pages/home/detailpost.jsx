@@ -19,7 +19,7 @@ function Detailpost() {
         {post?.map((props) => (
             <div key={props.id}>
              <Detail value = {props}/>
-            </div>
+            </div> //의미없는 map임 그냥 {}벗겨내기위함
         ))};
         </>
     );

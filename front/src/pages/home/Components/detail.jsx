@@ -25,7 +25,7 @@ function Detail(props) {
         if (a.group_id > b.group_id) return 1;
     
         return 0;
-    });
+    }); // group번호로  댓글{대댓글} 로 분리
    
     return (
         <>

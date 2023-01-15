@@ -40,7 +40,8 @@ exports.createPost = async (req, res, next) => {
     const { title, content, post_type, anonymous } = req.body;
 
     const createPost = new Post(null, title, content, '1212', post_type, anonymous);
-    // req.userData.userId
+    // req.userData.userId  이거 나중에 로그인 회원가입 완료하고나서 원상복구할것
+
     try {
         await createPost.save();
     } catch (err) {

@@ -13,7 +13,12 @@ function BoardList() {
           console.log(rejected);
         });
     },  []);
-
+    // list.sort((a, b) => {
+    //     if (a.group_id < b.group_id) return -1;
+    //     if (a.group_id > b.group_id) return 1;
+    
+    //     return 0;
+    // });
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
@@ -31,6 +36,7 @@ function BoardList() {
             <div key={props.id}>
              <List value = {props}/>
             </div>
+            
         ))};
         </>
     );
