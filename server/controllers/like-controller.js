@@ -1,17 +1,21 @@
 const HttpError = require('../models/http-error');
 const Like = require('../models/like');
 
-// 로그인 구현되면 1212 부분 전부 현재 로그인된 아이디로 변경
-exports.likeCounter = async (req, res, next) => {
-    const findUser = await Like.findUser(1212, req.params.pid);
+// 로그인 구현되면 1212 -> 현재 로그인된 아이디로 변경
+
+// 좋아요 버튼을 눌렀을 때 DB에 저장
+exports.saveLike = async (req, res, next) => {
+    const user_id = 1212;
+    const post_id = req.params.pid;
+    const findUser = await Like.findUser(user_id, post_id);
 
     if (findUser[0].length > 0) {
-        Like.deleteLike(1212, req.params.pid);
+        Like.deleteLike(user_id, post_id);
         return res.status(200).json({
             message: '좋아요 삭제 성공',
         });
     } else {
-        const addLike = new Like(null, 1212, req.params.pid);
+        const addLike = new Like(null, user_id, post_id);
 
         try {
             await addLike.save();

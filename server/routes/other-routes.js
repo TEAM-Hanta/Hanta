@@ -2,9 +2,10 @@ const express = require('express');
 
 const verifyToken = require('../middleware/verify-token');
 const noteController = require('../controllers/note-controller');
-const licenseController = require('../controllers/license_controller');
 const likeController = require('../controllers/like-controller');
+const scrapController = require('../controllers/scrap-controller');
 const reportController = require('../controllers/report-controller');
+const licenseController = require('../controllers/license_controller');
 
 const router = express.Router();
 
@@ -14,9 +15,18 @@ const router = express.Router();
 // ---- 좋아요 ----
 
 // GET => api/posts/:pid/like 게시글에서 좋아요 버튼을 눌렀을 때
-router.get('/posts/:pid/like', likeController.likeCounter);
+router.get('/posts/:pid/like', likeController.saveLike);
+
 // GET => api/like 내가 좋아요 한 글
 router.get('/like', likeController.myLikeList);
+
+// ---- 스크랩 ----
+
+// GET => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
+router.get('/posts/:pid/scrap', scrapController.saveScrap);
+
+// GET => api/scrap 내가 스크랩 한 글
+router.get('/scrap', scrapController.myScrapList);
 
 // ---- 신고 ----
 
