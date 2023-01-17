@@ -1,14 +1,101 @@
 const express = require('express');
-
-const app = express();
 const path = require('path');
+
+// 관리자 페이지 관련
+const AdminJS = require('adminjs');
+const AdminJSExpress = require('@adminjs/express');
+const { Adapter } = require('adminjs-sql');
+const session = require('express-session');
+const mysql2 = require('mysql2/promise');
+const MySQLStore = require('express-mysql-session')(session);
+const bcrypt = require('bcryptjs');
+const db_config = require('./utils/db_config.json');
+const secret_key = require('./utils/secret_key.json');
+const User = require('./models/user');
+
 const postRoutes = require('./routes/post-routes');
 const userRoutes = require('./routes/user-routes');
 const otherRoutes = require('./routes/other-routes');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+
 app.use(express.static(path.join(__dirname, 'front/build')));
+
+// 관리자 페이지
+// 관리자 계정인지 확인
+const authenticate = async (email, password) => {
+    let existUser;
+    try {
+        existUser = await User.findUser(email);
+    } catch (err) {
+        return console.log('존재하지 않는 아이디');
+    }
+    if (existUser[0][0].user_type !== 1) {
+        return console.log('관리자 권한 없음');
+    }
+
+    const comparePassword = await bcrypt.compare(password, existUser[0][0].password);
+    if (!comparePassword) {
+        // 비밀번호가 일치하지 않는다면,
+        return console.log('비밀번호 오류');
+    }
+    const DEFAULT_ADMIN = {
+        email: email,
+        password: comparePassword,
+    };
+
+    return Promise.resolve(DEFAULT_ADMIN);
+};
+
+const start = async () => {
+    const options = {
+        // DB 연결 옵션
+        host: db_config.host,
+        user: db_config.user,
+        database: db_config.database,
+        password: db_config.password,
+        port: db_config.port,
+    };
+
+    await AdminJS.registerAdapter(Adapter); // 어댑터 등록
+
+    const db = await Adapter.init('mysql2', options); // init
+
+    const admin = new AdminJS({
+        // DB 전체 테이블 가져옴
+        databases: [db],
+        resources: db.tables(),
+    });
+
+    const connection = mysql2.createPool(options);
+    const sessionStore = new MySQLStore({}, connection); // 로그인 세션 DB에 저장
+
+    const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+        admin,
+        {
+            authenticate,
+            cookieName: 'adminjs',
+            cookiePassword: secret_key.key,
+        },
+        null,
+        {
+            store: sessionStore,
+            resave: false,
+            saveUninitialized: false,
+            secret: secret_key.key,
+            cookie: {
+                httpOnly: process.env.NODE_ENV === 'production',
+                secure: process.env.NODE_ENV === 'production',
+            },
+            name: 'adminjs',
+        }
+    );
+
+    app.use(admin.options.rootPath, adminRouter);
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+};
+start();
 
 // cors
 app.use((req, res, next) => {
@@ -19,6 +106,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// routes
 app.use('/api', userRoutes);
 app.use('/api', otherRoutes);
 app.use('/api/posts', postRoutes);
