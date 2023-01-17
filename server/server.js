@@ -54,7 +54,6 @@ const start = async () => {
         user: db_config.user,
         database: db_config.database,
         password: db_config.password,
-        port: db_config.port,
     };
 
     await AdminJS.registerAdapter(Adapter); // 어댑터 등록
