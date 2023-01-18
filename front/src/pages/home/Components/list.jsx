@@ -4,28 +4,18 @@ import Count from "./count";
 import "../../css/home.css"
 import { Link } from "react-router-dom";
 
-function List(props) {
-    const coment = props.value.content.substr(0,5);
+function List({value}) {
+    const data = value.read();
     return (
         <>
-        <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
-        <Link to={'/detail/' + props.value.id} >
-            <div> 
-                <br></br>
-                <h4><FontAwesomeIcon icon="user" />{props.value.anonymous === 1 ? '익명' : props.value.nickname}</h4>
-        
-                {props.value.title}
-        
-                <br></br>
-                {coment}... {/* 내용 축약 시켜서 내보내기 */}
-                
-                <a style={{color:"lightgray", float:"right"}}>{new Date(props.value.created_at).toLocaleString("ko-KR",{timeZone:'UTC'})}</a>
-                <div className="sibal">
-                    <Count value ={{likes : props.value.like_count,reply : props.value.reply_count}}/>
-                </div>
-            </div>   
-        </Link>
-        </div>
+            <ul>    
+                {data.map(v => 
+                <>
+                    <li>{v.name}</li>
+                    <li>{v.number}</li>
+                </>
+                )}
+            </ul>
         </>
     );
 }
