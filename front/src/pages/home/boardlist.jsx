@@ -25,14 +25,6 @@ function fetchUser(param) {
 function BoardList() {
     const [list,setList] = useState([]);
   
-    useEffect(() => {
-        fetch('http://localhost:8080/api/posts/')  //home이 아니라 게시판임
-        .then((response) => response.json())
-        .then((data) => setList(data))
-        .catch(rejected => {
-          console.log(rejected);
-        });
-    },  []);
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
