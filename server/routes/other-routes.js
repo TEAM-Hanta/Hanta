@@ -10,7 +10,7 @@ const licenseController = require('../controllers/license_controller');
 const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
-// router.use(verifyToken);
+router.use(verifyToken);
 
 // ---- 좋아요 ----
 
@@ -54,5 +54,9 @@ router.get('/note/receive', noteController.receiveNoteList);
 
 // GET => api/note/:nid 쪽지 읽음 표시
 router.get('/note/:uid', noteController.readNote);
+
+// ---- 알림 ----
+// GET => api/notice 자격증 알림 출력
+router.get('/notice/license', licenseController.todayLicenseList);
 
 module.exports = router;
