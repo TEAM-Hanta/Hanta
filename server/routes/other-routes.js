@@ -23,16 +23,16 @@ router.get('/like', likeController.myLikeList);
 
 // ---- 스크랩 ----
 
-// GET => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
-router.get('/posts/:pid/scrap', scrapController.saveScrap);
+// POST => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
+router.post('/posts/:pid/scrap', scrapController.saveScrap);
 
 // GET => api/scrap 내가 스크랩 한 글
 router.get('/scrap', scrapController.myScrapList);
 
 // ---- 신고 ----
 
-// GET => api/posts/:pid/report
-router.get('/:pid/report', reportController.report);
+// POST => api/posts/:pid/report 게시글 신고 버튼 눌렀을 때
+router.post('/posts/:pid/report', reportController.report);
 
 // ---- 자격증 ----
 
