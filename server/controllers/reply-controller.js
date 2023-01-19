@@ -3,6 +3,8 @@ const Notice = require('../models/notice');
 const Reply = require('../models/reply');
 const Post = require('../models/post');
 
+// 댓글 + 대댓글 + 댓글 알림 관련
+
 // 댓글 리스트
 exports.getReply = async (req, res, next) => {
     let replyList;
@@ -109,4 +111,18 @@ exports.deleteReply = async (req, res, next) => {
     res.status(200).json({
         message: '댓글 삭제 성공',
     });
+};
+
+// 댓글 알림 리스트 출력
+exports.replyNoticeList = async (req, res, next) => {
+    const user_id = 1212; // req.userData.userId;
+
+    let replyNoticeList;
+    try {
+        [replyNoticeList] = await Notice.replyNoticeList(user_id);
+    } catch (err) {
+        const error = new HttpError('자격증 목록을 불러오지 못했습니다.', 500);
+        return next(error);
+    }
+    res.status(200).json(replyNoticeList);
 };

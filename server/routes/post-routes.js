@@ -39,7 +39,7 @@ router.get('/user/:uid', postController.getMyPost);
 // GET => api/posts/:pid/reply 댓글 리스트
 router.get('/:pid/reply', replyController.getReply);
 
-// POST => api/posts/:pid/reply 댓글쓰기
+// POST => api/posts/:pid/reply 댓글쓰기 + 댓글알림 저장
 router.post('/:pid/reply', replyController.createReply);
 
 // // POST => api/posts/reply2 대댓글쓰기

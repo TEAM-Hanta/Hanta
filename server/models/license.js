@@ -1,5 +1,7 @@
 const db = require('../utils/database');
 
+// 자격증 + 자격증 알림 관련
+
 module.exports = class License {
     constructor(id, user_id, message, url, license_name, exam_date, exam_type) {
         (this.id = id), (this.user_id = user_id), (this.message = message), (this.url = url), (this.license_name = license_name);

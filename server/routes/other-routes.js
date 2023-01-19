@@ -3,6 +3,7 @@ const express = require('express');
 const verifyToken = require('../middleware/verify-token');
 const noteController = require('../controllers/note-controller');
 const likeController = require('../controllers/like-controller');
+const replyController = require('../controllers/reply-controller');
 const scrapController = require('../controllers/scrap-controller');
 const reportController = require('../controllers/report-controller');
 const licenseController = require('../controllers/license_controller');
@@ -10,7 +11,7 @@ const licenseController = require('../controllers/license_controller');
 const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
-router.use(verifyToken);
+// router.use(verifyToken);
 
 // ---- 좋아요 ----
 
@@ -58,5 +59,8 @@ router.get('/note/:uid', noteController.readNote);
 // ---- 알림 ----
 // GET => api/notice 자격증 알림 출력
 router.get('/notice/license', licenseController.todayLicenseList);
+
+// GET => api/notice/reply 댓글 알림 출력
+router.get('/notice/reply', replyController.replyNoticeList);
 
 module.exports = router;

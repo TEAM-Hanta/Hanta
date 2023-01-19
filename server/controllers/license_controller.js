@@ -1,6 +1,8 @@
 const HttpError = require('../models/http-error');
 const License = require('../models/license');
 
+// 자격증 + 자격증 알림관련
+
 // 자격증 목록
 exports.licenseList = async (req, res, next) => {
     let licenseList;
