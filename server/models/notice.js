@@ -19,6 +19,4 @@ module.exports = class Notice {
     static replyList(user_id) {
         return db.execute('SELECT message,send_date,url FROM reply_notice WHERE user_id = ? ORDER BY send_date DESC LIMIT 1', [user_id]);
     }
-
-    // 자격증 알림 - 보류
 };

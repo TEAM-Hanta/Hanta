@@ -32,7 +32,7 @@ module.exports = class License {
         return db.execute('SELECT DISTINCT name,major FROM license GROUP BY name');
     }
 
-    // 당일 보내줘야하는 자격증 알림 출력 (당일날짜 +7 = exam_date라면 "00자격증 필기 원서접수까지 일주일 남았습니다." 출력)
+    // 당일 보내줘야하는 자격증 알림 출력 (당일날짜 +7 = exam_date라면 "00자격증 필기 원서접수 일주일 남았습니다." 출력)
     static todayLicenseNotice(user_id) {
         return db.execute("SELECT * FROM license_notice WHERE user_id = ? AND date_format(exam_date,'%Y-%m-%d') = date_format(DATE_ADD(now(),INTERVAL 7 DAY),'%Y-%m-%d')", [user_id]);
     }
