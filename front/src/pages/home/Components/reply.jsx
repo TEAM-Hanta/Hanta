@@ -18,7 +18,7 @@ function Reply(props) {
                     <a>{new Date(reply.created_at).toLocaleString("ko-KR",{timeZone:'UTC'})}</a>
                     </div>
                 </div>
-            ))};
+            ))}
 
         </div>
         </>

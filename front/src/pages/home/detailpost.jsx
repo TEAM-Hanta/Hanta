@@ -1,26 +1,33 @@
-import React,{ useEffect,useState } from "react";
+import React,{ Suspense,useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import Detail from "./Components/detail";
 
-function Detailpost() {
-    const params = useParams(); //상세주소 게시물 번호들고오기
-    const [post,setPost] = useState([]);
-    
-    useEffect(() => {
-        fetch(`http://localhost:8080/api/posts/${params.id}`)  //게시물 소환 api/posts/:pid${params.id}
+function fetchDetail(param) {
+    let detail;
+    const suspender = fetch(
+        `http://localhost:8080/api/posts/${param}`)
         .then((response) => response.json())
-        .then((data) => setPost(data))
-        .catch(rejected => {
-          console.log(rejected);
+        .then((data) => {
+        detail = data;
         });
-    },  []);
+    return {
+      read() {
+        if (!detail) {
+          throw suspender;
+        } else {
+          return detail;
+        }
+      }
+    };
+  }
+
+function Detailpost() {
+    const params = useParams();
     return (
-        <> 
-        {post?.map((props) => (
-            <div key={props.id}>
-             <Detail value = {props}/>
-            </div> //의미없는 map임 그냥 {}벗겨내기위함
-        ))};
+        <>
+        <Suspense fallback={<>...로딩</>}>
+            <Detail value={fetchDetail(params.id)}></Detail>
+        </Suspense>
         </>
     );
 }
