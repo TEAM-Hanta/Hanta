@@ -2,10 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React,{ useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../css/home.css"
+import Report from "./dropdown";
 import Reply from "./reply";
 
-function Detail(props) {
-    
+function Detail({value}) {
+
+    const data = value.read();
+    console.log(data)
     const params = useParams(); //상세주소 게시물 번호들고오기
     const [reply,setReply] = useState([]);
 
@@ -29,32 +32,35 @@ function Detail(props) {
    
     return (
         <>
-        <div style={{paddingLeft:"8%"}}> {/*이쪽 div칸에 신고버튼 ui집어넣기 */}
-        <h1><FontAwesomeIcon icon="arrow-left"/>
-        {props.value.post_type}게시판</h1>
-        </div>
-        
-        <div>{/*유저 프로필과 닉네임 글작성 div */}
-        <h2>[유저 프로필]{props.value.anonymous === 1 ? '익명' : props.value.user_id}</h2>
-         {new Date(props.value.created_at).toLocaleString("en-US",{timeZone:'UTC'})}
-        </div>
+        {data.map(v =>
+        <div key={v.id}> 
+            <div style={{paddingLeft:"8%"}}> {/*이쪽 div칸에 신고버튼 ui집어넣기 */}
+                <h1><FontAwesomeIcon icon="arrow-left"/>
+                {v.post_type}게시판</h1> <Report/>
+            </div>
+            
+            <div>{/*유저 프로필과 닉네임 글작성 div */}
+                <h2>[유저 프로필]{v.anonymous === 1 ? '익명' : v.user_id}</h2>
+                {new Date(v.created_at).toLocaleString("en-US",{timeZone:'UTC'})}
+            </div>
 
-        <br/>
+            <br/>
 
-        <div> {/*글 제목 div */}
-        <h1>{props.value.title}</h1>
-        </div>
+            <div> {/*글 제목 div */}
+                <h1>{v.title}</h1>
+            </div>
 
-        <br/>
-        <div> {/* 글내용 div */}
-        {props.value.content}
-        </div>
-        <div className="letter">
-        </div>
+            <br/>
+            <div> {/* 글내용 div */}
+                {v.content}
+            </div>
+            
 
-        <div> {/*댓글 영역 */}
-            <Reply value = {reply}/>
+            <div> {/*댓글 영역 */}
+                <Reply value = {reply}/>
+            </div>
         </div>
+        )}
 
         </>
     );
