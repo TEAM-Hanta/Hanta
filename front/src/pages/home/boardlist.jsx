@@ -3,7 +3,6 @@ import React,{ Suspense, useEffect,useState } from "react";
 import { useReducer } from "react";
 import List from "./Components/list";
 
-
 function fetchPost() {
     let post;
     const suspender = fetch('http://localhost:8080/api/posts/')
@@ -63,9 +62,12 @@ function BoardList() {
                 {/*차후 컨포넌트로 리스트 만들예정*/}
             </div>
 
+            <div style={{textAlign:"center"}}>
             <Suspense fallback = {<>... 로딩</>}>
                 <List value ={pop === 0? fetchPost():fetchPost1()}></List>
             </Suspense>
+            </div>
+            
 
 
         </>

@@ -22,14 +22,13 @@ function Write() {
     return (
         <>
          <form onSubmit={onSubmitHandler}>
-        <div style={{paddingLeft:"15%"}}>
-        <h1><FontAwesomeIcon icon="arrow-left"/>
-        
+        <div style={{textAlign:"center"}}>
+        <h1><FontAwesomeIcon style={{marginRight:"200px"}} icon="arrow-left"/>
         <button className="button">올리기</button>
         </h1>
-        </div>       
+        </div> 
         <div className='Write'>
-            <div>
+            <div className="title">
         <input type='title' id='title_txt' placeholder='제목' name="title"/>
             </div>
         
