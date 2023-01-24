@@ -15,8 +15,15 @@ const router = express.Router();
 // router.use(verifyToken);
 
 // ---- 마이페이지 ----
+
 // GET => api/mypage/posts 내가 쓴 글 목록
-router.get('/mypage/posts', postController.getMyPost);
+router.get('/mypage/posts', postController.myPostList);
+
+// GET => api/mypage/reply 내가 댓글 단 글 목록
+router.get('/mypage/reply', replyController.myReplyList);
+
+// GET => api/scrap 내가 스크랩 한 글 목록
+router.get('/mypage/scrap', scrapController.myScrapList);
 
 // ---- 좋아요 ----
 
@@ -30,9 +37,6 @@ router.get('/posts/:pid/like', likeController.saveLike);
 
 // POST => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
 router.post('/posts/:pid/scrap', scrapController.saveScrap);
-
-// GET => api/scrap 내가 스크랩 한 글
-router.get('/scrap', scrapController.myScrapList);
 
 // ---- 신고 ----
 
@@ -59,7 +63,7 @@ router.get('/note/send', noteController.sendNoteList);
 router.get('/note/receive', noteController.receiveNoteList);
 
 // GET => api/note/:nid 쪽지 읽음 표시
-router.get('/note/:uid', noteController.readNote);
+router.get('/note/:nid', noteController.readNote);
 
 // ---- 알림 ----
 // GET => api/notice 자격증 알림 출력

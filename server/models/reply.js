@@ -41,4 +41,9 @@ module.exports = class Reply {
     static findReply(reply_id) {
         return db.execute('SELECT * FROM reply WHERE reply.id = ?', [reply_id]);
     }
+
+    // 내가 쓴 댓글
+    static findMyReply(user_id) {
+        return db.execute('SELECT post.* FROM reply RIGHT JOIN post ON reply.post_id = post.id WHERE reply.user_id = ? GROUP BY post.id', [user_id]);
+    }
 };

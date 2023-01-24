@@ -83,7 +83,7 @@ exports.deletePost = async (req, res, next) => {
 };
 
 // 마이페이지 - 내가 쓴 글
-exports.getMyPost = async (req, res, next) => {
+exports.myPostList = async (req, res, next) => {
     let getMyPost;
 
     const user_id = req.userData.userId;

@@ -9,7 +9,7 @@ const verifyToken = require('../middleware/verify-token');
 const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
-router.use(verifyToken);
+// router.use(verifyToken);
 
 // ---- 글 ----
 
