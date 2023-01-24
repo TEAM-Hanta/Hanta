@@ -126,3 +126,16 @@ exports.replyNoticeList = async (req, res, next) => {
     }
     res.status(200).json(replyNoticeList);
 };
+
+// 내가 댓글단 글
+exports.myReplyList = async (req, res, next) => {
+    let replyList;
+    const user_id = 1212;
+    try {
+        [replyList] = await Reply.findMyReply(user_id);
+    } catch (err) {
+        const error = new HttpError('글을 불러오지 못했습니다.', 500);
+        return next(error);
+    }
+    res.status(200).json(replyList);
+};

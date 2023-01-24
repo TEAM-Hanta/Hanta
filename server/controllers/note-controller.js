@@ -47,7 +47,7 @@ exports.receiveNoteList = async (req, res, next) => {
 // 쪽지를 읽었을 때 읽음으로 변경 - 수신인이 쪽지를 클릭했을 때 실행됨
 exports.readNote = async (req, res, next) => {
     try {
-        await Note.read(req.params.uid);
+        await Note.read(req.params.nid);
     } catch (err) {
         const error = new HttpError('쪽지 읽음 변경 실패', 500);
         return next(error);

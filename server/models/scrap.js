@@ -21,6 +21,6 @@ module.exports = class Scrap {
 
     // 내가 스크랩한 글 조회
     static myScrapList(user_id) {
-        return db.execute('SELECT post.title,post.content,post.created_at FROM scrap JOIN post ON scrap.post_id = post.id WHERE scrap.user_id = ?', [user_id]);
+        return db.execute('SELECT post.* FROM scrap JOIN post ON scrap.post_id = post.id WHERE scrap.user_id = ?', [user_id]);
     }
 };
