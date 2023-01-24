@@ -1,6 +1,7 @@
 const express = require('express');
 
 const verifyToken = require('../middleware/verify-token');
+const postController = require('../controllers/post-controller');
 const noteController = require('../controllers/note-controller');
 const likeController = require('../controllers/like-controller');
 const replyController = require('../controllers/reply-controller');
@@ -12,6 +13,10 @@ const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
 // router.use(verifyToken);
+
+// ---- 마이페이지 ----
+// GET => api/mypage/posts 내가 쓴 글 목록
+router.get('/mypage/posts', postController.getMyPost);
 
 // ---- 좋아요 ----
 
