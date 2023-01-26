@@ -12,20 +12,25 @@ function List({value}) {
         <div key={ v .id}>
             <div style={{paddingLeft:"15%", paddingRight:"15%"}} className="list">
 
-            <Link to={'/detail/' + v.id} >
+            <Link style={{textDecoration:"none", color:"black"}} to={'/detail/' + v.id} >
                 <div> 
                     <br></br>
-                    <h4><FontAwesomeIcon icon="user" />{v.anonymous === 1 ? '익명' : v.nickname}</h4>
-            
-                    {v.title}
-            
+                    <h4 style={{fontSize:"30px"}}><FontAwesomeIcon icon="user" />{v.anonymous === 1 ? '익명' : v.nickname}</h4>
                     <br></br>
+            
+            <div>
+                    <div>
+                    <div style={{fontSize:"25px"}}> {v.title}</div>
                     {v.content.substr(0,5)}... {/* 내용 축약 시켜서 내보내기 */}
-                    
-                    <div style={{color:"lightgray", float:"right"}}>{new Date(v.created_at).toLocaleString("ko-KR",{timeZone:'UTC'})}</div>
+                    </div>
+
+                    <div style={{color:"lightgray", float:""}}>{new Date(v.created_at).toLocaleString("ko-KR",{timeZone:'UTC'})}</div>
                     <div className="sibal">
                         <Count value ={{likes : v.like_count,reply : v.reply_count}}/>
                     </div>
+                    
+            </div>
+                    
                 </div>   
             </Link>
 

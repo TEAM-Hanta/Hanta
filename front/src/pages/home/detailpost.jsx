@@ -25,7 +25,7 @@ function Detailpost() {
     const params = useParams();
     return (
         <>
-        <Suspense fallback={<>...로딩</>}>
+        <Suspense style={{textAlign:"center", fontSize:"40px"}} fallback={<>...로딩</>}>
             <Detail value={fetchDetail(params.id)}></Detail>
         </Suspense>
         </>

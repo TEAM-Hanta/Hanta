@@ -8,13 +8,14 @@
 
 .Write {
     padding: 20px;
-    padding-right: 15% ;
-    padding-left: 15%;
+    float: center;
+    text-align: center;
 }
 
-.Write div {
-    margin-top: 30px;
-    margin-left: 50px;
+.title {
+    margin-bottom: 60px;
+    width: 350px;
+    margin: 0 auto;
 }
 
 #title_txt {
@@ -29,20 +30,21 @@
 #title_txt:focus { outline : none; }
 
 #content_txt {
-    width: 91%;
+    width: 320px;
     resize: none;
     border: solid 1px #ababab;
-    height: 500px;
+    height: 420px;
     font-size: 22px;
     font-weight: bold;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 #content_txt:focus { outline : none; }
 
 .button {
-    float: right;
-    font-size: 17px;
+    float: center;
+    font-size: 20px;
     margin-right: 20%;
     margin-top: 5px;
     border: solid 1px #ababab;
