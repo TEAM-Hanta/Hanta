@@ -6,10 +6,11 @@ div {
     padding-left: 10%;
     text-align: left;
     border-bottom: 1px solid grey;
+    text-decoration: none;
 }
 
 .sibal {
-    text-align: right;
+    text-align: ;
     margin-right: 10%;
     font-size: 20px;
 }

@@ -82,7 +82,7 @@ function Mypage() {
         <>
             <div>
                 <h1 style={{paddingLeft:"15%", paddingRight:"15%"}}>마이페이지
-                <button onClick={openModal} className="button">로그아웃</button>
+                <button onClick={openModal} className="button " style={{float:"right"}}>로그아웃</button>
                 </h1>
             </div>
 
@@ -102,7 +102,6 @@ function Mypage() {
 
         <Modaly open={modalOpen} close={closeModal} header="Modal heading">
         {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달 */}
-        {/* 팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
         </Modaly>
 
 
