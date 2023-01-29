@@ -42,7 +42,7 @@ exports.signup = async (req, res, next) => {
     // 회원가입 하면 로그인 됨
     let token;
     try {
-        token = jwt.sign({ userId: createUser.id }, secret_key.key, { expiresIn: '1h' });
+        token = jwt.sign({ userId: createUser.id }, secret_key.key);
     } catch (err) {
         const error = new HttpError('회원가입 실패', 500);
         return next(error);
@@ -82,8 +82,7 @@ exports.login = async (req, res, next) => {
             {
                 userId: existUser[0][0].id,
             },
-            secret_key.key,
-            { expiresIn: '1h' }
+            secret_key.key
         );
     } catch (err) {
         const error = new HttpError('로그인 실패', 500);
