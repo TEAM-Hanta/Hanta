@@ -6,7 +6,7 @@ function License() {
     return (
         <>
             <div>
-                <h1 style={{fontWeight:"bold", fontSize:"30px", marginTop:"10px", marginLeft:"20px"}}>자격증 알리미</h1>
+                <h1 style={{fontWeight:"bold", fontSize:"30px", marginLeft:"20px"}}>자격증 알리미</h1>
             </div><br/>
             <Licensecard/>
         </>

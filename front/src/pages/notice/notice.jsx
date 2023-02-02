@@ -18,8 +18,8 @@ function Notice() {
 
   return (
     <>
-        <div style={{paddingLeft:"15%"}}>
-                <h1>알림</h1>
+        <div>
+                <h1 style={{fontWeight:"bold", fontSize:"30px", marginLeft:"20px"}}>알림</h1>
         </div>
         {noti?.map((props) => (
           <div key={props.id}>

@@ -22,7 +22,7 @@ function Login() {
 };
     return(
    <div className="loginy">
-    <img style={{width:"200px", height:"200px", paddingBottom:"20px"}} alt="bg" src="img/jolla.png"/>
+    <img style={{width:"300px", height:"300px", paddingBottom:"20px"}} alt="bg" src="img/hanta-Logo.png"/>
     <form onSubmit={onSubmitHandler}>
      <input className="input" style={{fontSize:"22px"}} description="NickName" placeholder=" 아이디" type="text" name="nickname"/>
      <br/>

@@ -4,7 +4,7 @@ import "../../css/home.css"
 
 function Count(props) {
     return (
-        <div>
+        <div style={{float:"right"}}>
         <span>
             <FontAwesomeIcon icon="thumbs-up" />
         </span>{props.value.likes === null ? 0:props.value.likes}

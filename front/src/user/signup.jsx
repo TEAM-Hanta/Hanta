@@ -30,7 +30,7 @@ function signUp() {
 
      <form onSubmit={onSubmitHandler}>
         <div className='inputking'> 
-        <img style={{width:"230px", height:"200px" }} alt="intro" src="img/intro.png"/>
+        <img style={{width:"270px", height:"200px" }} alt="intro" src="img/signup 2.png"/>
         <input className='input' type='nickname' id='title_txt' placeholder=' 아이디' name="id"/>
         <input className='input' type='nickname' id='title_txt' placeholder=' 닉네임' name="nickname"/>
         <input className='input' type='password' id='title_txt' placeholder=' 비밀번호' name="password"/>
