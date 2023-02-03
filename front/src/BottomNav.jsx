@@ -21,10 +21,10 @@ const BottomNav = () => {
           {/* 네비게이션을 구성하고 있는 하나의 버튼 */}
         </div>
       </Link>
-      <Link to="/notice" className="nav-link" onClick={() => setActiveNav(2)}>
+      <Link to="/license" className="nav-link" onClick={() => setActiveNav(2)}>
         <div>
           <FontAwesomeIcon
-            icon="compass"
+            icon="medal"
             className={activeNav === 2 ? "nav-item active" : "nav-item"}
           />
         </div>
@@ -37,10 +37,10 @@ const BottomNav = () => {
           />
         </div>
       </Link>
-      <Link to="/license" className="nav-link" onClick={() => setActiveNav(4)}>
+      <Link to="/notice" className="nav-link" onClick={() => setActiveNav(4)}>
         <div>
           <FontAwesomeIcon
-            icon="medal"
+            icon="compass"
             className={activeNav === 4 ? "nav-item active" : "nav-item"}
           />
         </div>

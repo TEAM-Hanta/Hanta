@@ -35,7 +35,7 @@ module.exports = class Post {
     // 인기글 목록 (상위 1O개)
     static popularPost() {
         return db.execute(
-            'SELECT post.id,title,content,created_at,post.user_id FROM post JOIN like_count ON post.id = like_count.post_id GROUP BY like_count.post_id ORDER BY count(like_count.post_id) DESC LIMIT 0,10;'
+            'SELECT A.id,A.title,A.content,A.created_at,A.user_id , A.anonymous, ifnull(B.cnt,0) as like_count, ifnull(C.cnt,0) as reply_count, D.nickname FROM post as A LEFT OUTER JOIN (SELECT post_id, count(*) as cnt FROM like_count GROUP BY post_id )as B ON B.post_id = A.id LEFT OUTER JOIN (SELECT post_id, count(*) as cnt FROM reply GROUP BY post_id) as C ON C.post_id = A.id LEFT OUTER JOIN (SELECT id, nickname FROM user) as D ON D.id = A.user_id ORDER BY B.cnt DESC'
         );
     }
 

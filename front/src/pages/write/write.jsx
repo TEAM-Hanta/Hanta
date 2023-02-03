@@ -1,31 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
 import "../css/write.css"
 
 function Write() { 
+    
+    const [isChecked, setIsChecked] = useState(false);
 
-  const onSubmitHandler = (e) => {
-      const title = e.target.title.value;
-      const content = e.target.content.value;
-      const post_type = '자유'; //라디오 버튼으로 게시판 추가하기
-      fetch('http://localhost:8080/api/posts/', {
-          method : 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              title,
-              content,
-              post_type,
-          }),
-      });
-  };
+    const onSubmitHandler = (e) => {
+        const title = e.target.title.value;
+        const content = e.target.content.value;
+        const post_type =e.target.post_type.value; //라디오 버튼으로 게시판 추가하기
+        const anonymous = isChecked;
+        fetch('http://localhost:8080/api/posts/', {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title,
+                content,
+                post_type,
+                anonymous
+            }),
+        });
+    };
+    const handleChange = (event) => {
+      setIsChecked(event.target.checked);};
     return (
         <>
          <form onSubmit={onSubmitHandler}>
         <div style={{textAlign:"center"}}>
-        <h1><FontAwesomeIcon style={{marginRight:"200px"}} icon="arrow-left"/>
-        <button className="button">올리기</button>
-        </h1>
+            <h1><FontAwesomeIcon style={{marginRight:"200px"}} icon="arrow-left"/>
+                <select name="post_type" id='post_type'>
+                    <option value="자유">자유</option>
+                    <option value="유머">유머</option>
+                    <option value="테스트">테스트</option>
+                </select>
+                익명<input type='checkbox'  checked={isChecked} onChange={handleChange} name="anonymous" ></input>
+                <button className="button">올리기</button>
+            </h1>
         </div> 
         <div className='Write'>
             <div className="title">

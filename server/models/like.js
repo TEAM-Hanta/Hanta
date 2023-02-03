@@ -18,8 +18,8 @@ module.exports = class Like {
     static deleteLike(user_id, post_id) {
         return db.execute('DELETE FROM like_count WHERE user_id = ? AND post_id = ?', [user_id, post_id]);
     }
-    // 내가 좋아요 누른 글 조회
-    static myLikeList(user_id) {
-        return db.execute('SELECT post.title,post.content,post.created_at FROM like_count JOIN post ON like_count.post_id = post.id WHERE like_count.user_id = ?', [user_id]);
-    }
+    // // 내가 좋아요 누른 글 조회
+    // static myLikeList(user_id) {
+    //     return db.execute('SELECT post.title,post.content,post.created_at FROM like_count JOIN post ON like_count.post_id = post.id WHERE like_count.user_id = ?', [user_id]);
+    // }
 };

@@ -83,14 +83,8 @@ exports.deletePost = async (req, res, next) => {
 };
 
 // 마이페이지 - 내가 쓴 글
-exports.getMyPost = async (req, res, next) => {
+exports.myPostList = async (req, res, next) => {
     let getMyPost;
-    const mypage_id = parseInt(req.params.uid);
-    if (mypage_id !== req.userData.userId) {
-        // 로그인된 사용자 자신의 마이페이지만 접속 가능
-        const error = new HttpError('접속 권한 없음', 401);
-        return next(error);
-    }
 
     const user_id = req.userData.userId;
     try {

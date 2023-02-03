@@ -31,14 +31,14 @@ exports.saveLike = async (req, res, next) => {
 };
 
 // 내가 좋아요 한 글
-exports.myLikeList = async (req, res, next) => {
-    let likeList;
-    const user_id = 1212;
-    try {
-        [likeList] = await Like.myLikeList(user_id);
-    } catch (err) {
-        const error = new HttpError('글을 불러오지 못했습니다.', 500);
-        return next(error);
-    }
-    res.status(200).json(likeList);
-};
+// exports.myLikeList = async (req, res, next) => {
+//     let likeList;
+//     const user_id = 1212;
+//     try {
+//         [likeList] = await Like.myLikeList(user_id);
+//     } catch (err) {
+//         const error = new HttpError('글을 불러오지 못했습니다.', 500);
+//         return next(error);
+//     }
+//     res.status(200).json(likeList);
+// };
