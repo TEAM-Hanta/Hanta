@@ -42,13 +42,26 @@
 
 #content_txt:focus { outline : none; }
 
-.button {
+.buttons {
     float: center;
+    font-weight: bold;
     font-size: 20px;
-    margin-right: 20%;
-    margin-top: 5px;
+    margin: 5px;
     border: solid 1px #ababab;
-    border-radius: 10%;
+    border-radius: 5px;
+    background-color: lightgray;
+    padding: 5px;
+}
+
+.buttons:hover{
+    float: center;
+    font-weight: bold;
+    font-size: 21px;
+    margin: 5px;
+    border: solid 1px #ababab;
+    border-radius: 5px;
+    background-color: lightgray;
+    padding: 5px;
 }
 
 .buthon {
@@ -70,4 +83,15 @@
     border: none;
     background-color: white;
     border-bottom: solid 1px #ababab;
+}
+
+.categodry-box {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: lightgray;
+    border: none;
 }

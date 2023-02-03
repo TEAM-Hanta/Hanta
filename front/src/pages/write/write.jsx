@@ -31,15 +31,20 @@ function Write() {
          <form onSubmit={onSubmitHandler}>
         <div style={{textAlign:"center"}}>
             <h1><FontAwesomeIcon style={{marginRight:"200px"}} icon="arrow-left"/>
-                <select name="post_type" id='post_type'>
+            
+            <box className="buttons">
+            익명<input type='checkbox'  checked={isChecked} onChange={handleChange} name="anonymous" ></input>
+            </box>
+
+                <select className="buttons" name="post_type" id='post_type'>
                     <option value="자유">자유</option>
                     <option value="유머">유머</option>
                     <option value="테스트">테스트</option>
                 </select>
-                익명<input type='checkbox'  checked={isChecked} onChange={handleChange} name="anonymous" ></input>
-                <button className="button">올리기</button>
+
+                <button className="buttons">올리기</button>
             </h1>
-        </div> 
+            </div> 
         <div className='Write'>
             <div className="title">
         <input type='title' id='title_txt' placeholder='제목' name="title"/>

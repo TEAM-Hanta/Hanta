@@ -82,7 +82,7 @@ function Mypage() {
         <>
             <div>
                 <h1 style={{fontWeight:"bold", fontSize:"30px", marginLeft:"20px"}}>마이페이지
-                <button onClick={openModal} className="button " style={{float:"right"}}>로그아웃</button>
+                <button onClick={openModal} className="buttons" style={{float:"right"}}>로그아웃</button>
                 </h1>
             </div>
 
@@ -94,7 +94,7 @@ function Mypage() {
             <button className="buthony"onClick = {()=>{setPage(2)}}>좋아요한 글</button>
             </div>
 
-            <br/>y
+            <br/>
 
             <Suspense fallback = {<>... 로딩</>}>
                 <Myletter value = {page === 0? fetchPost1() : (page === 1? fetchPost2(): fetchPost3())}></Myletter>
