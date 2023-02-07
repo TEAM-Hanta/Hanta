@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+
 .App {
-    padding-top: 2%;
+    padding-top: 3%;
+    font-family: 'Dongle';
+    background: white;
 }

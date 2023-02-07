@@ -3,7 +3,7 @@ import React,{ useEffect,useState } from "react";
 
 function Notice() {
   
-  const [noti,setNoti] = useState([{id: 1, title: 'asdf', date: 'asdf' },{id: 2, title: 'asdf', date: 'asdf' }]);
+  const [noti,setNoti] = useState([{id: 1, title: '알림제목', date: '알림날짜' },{id: 2, title: '알림제목', date: '알림날짜' }]);
 
   const str = 'notice'
 

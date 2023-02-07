@@ -16,14 +16,14 @@ const Noticecp = (props) => {
     return (
         <>
         <br/>
-        <Paper style={{marginLeft:"15%",marginRight:"15%"}} elevation={4} className={classes.paper}>
+        <Paper style={{margin:"0 auto",display:"block", width:"300px", height:"80px"}} elevation={4} className={classes.paper}>
         <Typography variant="body1">
         <div className="ct">
             <FontAwesomeIcon style={{float:"right", paddingRight:"10px"}} icon="x"/>
                 <ul>
-                    <li className="bd">{props.value.title}</li>
-                    <br/>
-                    <div style={{fontSize:"12px"}}>{props.value.date}</div>
+                    <li className="bd" style={{fontSize:"15", fontWeight:"bold", paddingTop:"10px"}}>{props.value.title}</li>
+                    
+                    <div style={{fontSize:"12px", color:"gray"}}>{props.value.date}</div>
                 </ul>
             </div>
         </Typography>
