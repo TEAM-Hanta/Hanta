@@ -86,7 +86,9 @@ exports.deletePost = async (req, res, next) => {
 exports.myPostList = async (req, res, next) => {
     let getMyPost;
 
-    const user_id = req.userData.userId;
+    const user_id = '1212';
+
+    // const user_id = req.userData.userId; (로그인 구현후 복구)
     try {
         getMyPost = await Post.findMyPost(user_id);
     } catch (err) {

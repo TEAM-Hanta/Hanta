@@ -51,7 +51,7 @@ function Write() {
             </div>
         
             <div>
-        <textarea id='content_txt' placeholder='글을 작성해보세요.' name="content"/>
+        <textarea id='content_txt' placeholder='글을 작성해보세요.'maxLength={450} name="content"/>
             </div>
         </div>
          </form>  
