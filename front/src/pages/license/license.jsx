@@ -1,5 +1,5 @@
-import { Component } from "react";
-import Licensecard from "../home/Components/licensecard";
+
+import Licensecard from "./licensecard";
 import "../css/license.css"
 
 function License() {

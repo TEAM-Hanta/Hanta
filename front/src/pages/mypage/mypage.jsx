@@ -1,12 +1,12 @@
-import React, { Suspense,Component, useState } from 'react';
-import Myletter from "./myletter";
+import React, { Suspense, useState } from 'react';
+import List from '../home/Components/list';
 import "../css/write.css"
 import Modaly from "./modaly";
 
 
 function fetchPost1() {
   let post;
-  const suspender = fetch('http://localhost:8080/api/posts/')
+  const suspender = fetch('http://localhost:8080/api/mypage/posts')
       .then((response) => response.json())
       .then((data) => {
       post = data;
@@ -26,7 +26,7 @@ function fetchPost1() {
 
 function fetchPost2() {
   let post;
-  const suspender = fetch('http://localhost:8080/api/scrap')
+  const suspender = fetch('http://localhost:8080/api/mypage/reply')
       .then((response) => response.json())
       .then((data) => {
       post = data;
@@ -46,7 +46,7 @@ function fetchPost2() {
 
 function fetchPost3() {
   let post;
-  const suspender = fetch('http://localhost:8080/api/like')
+  const suspender = fetch('http://localhost:8080/api/mypage/scrap')
       .then((response) => response.json())
       .then((data) => {
       post = data;
@@ -91,13 +91,13 @@ function Mypage() {
             <div className="buthon">
             <button className="buthony"onClick = {()=>{setPage(0)}}>작성글</button>
             <button className="buthony"onClick = {()=>{setPage(1)}}>댓글단 글</button>
-            <button className="buthony"onClick = {()=>{setPage(2)}}>좋아요한 글</button>
+            <button className="buthony"onClick = {()=>{setPage(2)}}>스크랩</button>
             </div>
 
-            <br/>y
+            <br/>
 
             <Suspense fallback = {<>... 로딩</>}>
-                <Myletter value = {page === 0? fetchPost1() : (page === 1? fetchPost2(): fetchPost3())}></Myletter>
+                <List value = {page === 0? fetchPost1() : (page === 1? fetchPost2(): fetchPost3())}></List>
             </Suspense>
 
         <Modaly open={modalOpen} close={closeModal} header="Modal heading">
