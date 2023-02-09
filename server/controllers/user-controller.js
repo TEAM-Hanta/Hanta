@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const secret_key = require('../utils/secret_key.json');
 
 const User = require('../models/user');
 const HttpError = require('../models/http-error');
@@ -42,7 +41,7 @@ exports.signup = async (req, res, next) => {
     // 회원가입 하면 로그인 됨
     let token;
     try {
-        token = jwt.sign({ userId: createUser.id }, secret_key.key);
+        token = jwt.sign({ userId: createUser.id }, process.env.SECRET_KEY);
     } catch (err) {
         const error = new HttpError('회원가입 실패', 500);
         return next(error);
@@ -82,7 +81,7 @@ exports.login = async (req, res, next) => {
             {
                 userId: existUser[0][0].id,
             },
-            secret_key.key
+            process.env.SECRET_KEY
         );
     } catch (err) {
         const error = new HttpError('로그인 실패', 500);

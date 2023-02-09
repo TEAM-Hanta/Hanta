@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const secret_key = require('../utils/secret_key.json');
 
 const HttpError = require('../models/http-error');
 
@@ -12,7 +11,7 @@ module.exports = (req, res, next) => {
         if (!token) {
             throw new Error('사용자 인증에 실패했습니다.');
         }
-        const decodedToken = jwt.verify(token, secret_key.key);
+        const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
         req.userData = { userId: decodedToken.userId };
         // 유효한 토큰이라면 req.userData에 저장
         next();

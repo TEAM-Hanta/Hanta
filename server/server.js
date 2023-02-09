@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
@@ -9,8 +10,6 @@ const session = require('express-session');
 const mysql2 = require('mysql2/promise');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcryptjs');
-const db_config = require('./utils/db_config.json');
-const secret_key = require('./utils/secret_key.json');
 const User = require('./models/user');
 
 const postRoutes = require('./routes/post-routes');
@@ -50,10 +49,10 @@ const authenticate = async (email, password) => {
 const start = async () => {
     const options = {
         // DB 연결 옵션
-        host: db_config.host,
-        user: db_config.user,
-        database: db_config.database,
-        password: db_config.password,
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_DATABASE,
+        password: process.env.DB_PASSWORD,
     };
 
     await AdminJS.registerAdapter(Adapter); // 어댑터 등록
@@ -74,14 +73,14 @@ const start = async () => {
         {
             authenticate,
             cookieName: 'adminjs',
-            cookiePassword: secret_key.key,
+            cookiePassword: process.env.SECRET_KEY,
         },
         null,
         {
             store: sessionStore,
             resave: false,
             saveUninitialized: false,
-            secret: secret_key.key,
+            secret: process.env.SECRET_KEY,
             cookie: {
                 httpOnly: process.env.NODE_ENV === 'production',
                 secure: process.env.NODE_ENV === 'production',

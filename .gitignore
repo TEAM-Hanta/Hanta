@@ -155,9 +155,3 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node
-
-# mysql 
-db_config.json
-
-# jwt
-secret_key.json
