@@ -3,8 +3,8 @@ const HttpError = require('../models/http-error');
 const Note = require('../models/note');
 
 exports.sendNote = async (req, res, next) => {
-    const send_user_id = req.userData.userId;
-    const receive_user_id = req.body.id; // 프론트가 어떻게 보내줄지 몰라서 일단 body에서 받음
+    const send_user_id = 1212;
+    const receive_user_id = req.body.id;
     const content = req.body.content;
 
     const result = new Note(send_user_id, receive_user_id, content);

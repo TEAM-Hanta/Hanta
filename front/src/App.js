@@ -18,6 +18,7 @@ import Login from './user/login'; //로그인
 import Signup from './user/signup'; //회원가입
 import Note from './pages/note/note';
 import DetailNote from './pages/home/detailNote';
+import WriteNote from './pages/write/writeNote';
 
 const App = () => {
     return (
@@ -30,7 +31,8 @@ const App = () => {
                 <Route path="/license" element={<License />} />
                 <Route path="/notice" element={<Notice />} />
                 <Route path="/mypage" element={<Mypage />} />
-                <Route path="/note" element={<Note />} /> {/* 쪽지리스트 */}
+                <Route path="/mynote" element={<Note />} /> {/* 쪽지함 */}
+                <Route path="/note" element={<WriteNote />} /> {/* 쪽지작성 */}
                 <Route path="/note/:id" element={<DetailNote />} /> {/* 쪽지내용 보기 */}
                 <Route path="/write" element={<Write />} />
                 <Route path="/detail/:id" element={<Detail />} />
