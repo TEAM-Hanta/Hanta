@@ -62,8 +62,8 @@ router.get('/note/send', noteController.sendNoteList);
 // GET => api/note/receive 내가 받은 쪽지
 router.get('/note/receive', noteController.receiveNoteList);
 
-// GET => api/note/:nid 쪽지 읽음 표시
-// router.get('/note/:nid', noteController.readNote);
+// GET => api/note/:nid/read 쪽지 읽음 표시
+router.get('/note/:nid/read', noteController.readNote);
 
 // GET => api/note/:nid 쪽지번호가 특정하는 글 보기
 router.get('/note/:nid', noteController.getNote);

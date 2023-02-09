@@ -21,7 +21,7 @@ module.exports = class Note {
 
     // 내가 보낸 쪽지 리스트
     static sendNoteList(user_id) {
-        return db.execute('SELECT note.id,content,send_date,note_read_type FROM note JOIN note_content ON note.note_type = 0 AND note.user_id = ? AND note_content.id = note.note_content_id', [
+        return db.execute('SELECT note_content.id,content,send_date,note_read_type FROM note JOIN note_content ON note.note_type = 0 AND note.user_id = ? AND note_content.id = note.note_content_id', [
             user_id,
         ]);
     }
@@ -29,20 +29,21 @@ module.exports = class Note {
     // 내가 받은 쪽지 리스트
     static receiveNoteList(user_id) {
         return db.execute(
-            'SELECT note.id,content,send_date,note_read_type, user.nickname FROM note JOIN note_content ON note.note_type = 1 AND note.user_id = ? AND note_content.id = note.note_content_id JOIN user ON note.user_id = user.id',
+            'SELECT note_content.id,content,send_date,note_read_type, user.nickname FROM note JOIN note_content ON note.note_type = 1 AND note.user_id = ? AND note_content.id = note.note_content_id JOIN user ON note.user_id = user.id',
             [user_id]
         );
     }
 
     // 쪽지 읽음으로 변경
-    // static read(note_content_id) {
-    //     return db.execute("UPDATE note SET note_read_type = 'Y' WHERE note_content_id = ?", [note_content_id]);
-    // }
+    static read(note_id) {
+        console.log('실행되니', note_id);
+        return db.execute("UPDATE note SET note_read_type = 'Y' WHERE note_content_id = ?", [note_id]);
+    }
 
     // note_id에 해당하는 글 상세보기
     static fetchOne(note_id) {
         return db.execute(
-            'SELECT note.id as id , send_date,note_type,note_read_type,content,user.nickname FROM note JOIN note_content ON note_content_id = note_content.id JOIN user ON user.id = note.user_id WHERE note.id = ?',
+            'SELECT note_content.id as id , send_date,note_type,note_read_type,content,user.nickname FROM note JOIN note_content ON note_content_id = note_content.id JOIN user ON user.id = note.user_id WHERE note.id = ?',
             [note_id]
         );
     }

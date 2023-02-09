@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import Count from './count';
 import '../../css/home.css';
 import { Link } from 'react-router-dom';
 
-function noteList({ value }) {
+function NoteList({ value }) {
     const data = value.read();
+
     return (
         <>
             {data.map((v) => (
@@ -18,6 +18,7 @@ function noteList({ value }) {
                                     <FontAwesomeIcon icon="user" />
                                     {v.nickname}
                                 </h4>
+                                <p>{v.note_read_type === 'Y' ? '읽음' : '읽지않음'}</p>
                             </div>
 
                             <div>
@@ -34,6 +35,6 @@ function noteList({ value }) {
     );
 }
 
-export default noteList;
+export default NoteList;
 
 /*홈 페이지에 있는 리스트 형태의 글을 컴포넌트로 다시 수정 할예정*/

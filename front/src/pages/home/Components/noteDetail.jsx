@@ -1,9 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import '../../css/home.css';
-import Report from './dropdown';
-import Reply from './reply';
 
 function NoteDetail({ value }) {
     const data = value.read();
@@ -15,6 +11,8 @@ function NoteDetail({ value }) {
                     <div>
                         {/*유저 프로필과 닉네임 글작성 div */}
                         <h2>[유저 프로필]{v.nickname}</h2>
+                        <p>{v.note_read_type === 'Y' ? '읽음' : '읽지않음'}</p>
+
                         {new Date(v.send_date).toLocaleString('ko-KR', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'short' })}
                     </div>
 

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NoteDetail from './Components/noteDetail';
 
@@ -9,6 +9,7 @@ function fetchDetail(param) {
         .then((data) => {
             detail = data;
         });
+
     return {
         read() {
             if (!detail) {
@@ -20,8 +21,31 @@ function fetchDetail(param) {
     };
 }
 
+function readNote(params) {
+    let note;
+    const suspender = fetch(`http://localhost:8080/api/note/${params}/read`)
+        .then((response) => response.json())
+        .then((data) => {
+            note = data;
+        });
+    return {
+        read() {
+            if (!note) {
+                throw suspender;
+            } else {
+                return note;
+            }
+        },
+    };
+}
+
 function DetailNote() {
     const params = useParams();
+
+    useEffect(() => {
+        readNote(params.id);
+    }, []);
+
     return (
         <>
             <Suspense style={{ textAlign: 'center', fontSize: '40px' }} fallback={<>...로딩</>}>
