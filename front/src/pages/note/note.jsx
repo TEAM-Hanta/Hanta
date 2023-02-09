@@ -1,7 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import List from '../home/Components/noteList';
 import '../css/write.css';
-import Modaly from './modaly';
 
 function fetchNote1() {
     let note;

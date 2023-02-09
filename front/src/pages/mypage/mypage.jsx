@@ -76,7 +76,7 @@ function Mypage() {
                     <button onClick={openModal} className="buttons" style={{ float: 'right' }}>
                         로그아웃
                     </button>
-                    <Link to="/note">
+                    <Link to="/mynote">
                         <button className="buttons" style={{ float: 'right' }}>
                             쪽지함
                         </button>
