@@ -63,7 +63,10 @@ router.get('/note/send', noteController.sendNoteList);
 router.get('/note/receive', noteController.receiveNoteList);
 
 // GET => api/note/:nid 쪽지 읽음 표시
-router.get('/note/:nid', noteController.readNote);
+// router.get('/note/:nid', noteController.readNote);
+
+// GET => api/note/:nid 쪽지번호가 특정하는 글 보기
+router.get('/note/:nid', noteController.getNote);
 
 // ---- 알림 ----
 // GET => api/notice 자격증 알림 출력
