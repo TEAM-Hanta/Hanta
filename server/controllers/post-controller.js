@@ -32,8 +32,7 @@ exports.getPost = async (req, res, next) => {
 exports.createPost = async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.errors.length !== 0) {
-        console.log(errors);
-        const error = new HttpError('제목은 30자, 내용은 200자 이내로 적어주세요.', 401);
+        const error = new HttpError('제목은 5자 이상, 내용은 200자 이내로 적어주세요.', 401);
         return next(error);
     }
 

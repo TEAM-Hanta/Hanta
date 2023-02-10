@@ -9,10 +9,12 @@ function SignUp() {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
+
         const id = e.target.id.value;
         const nickname = e.target.nickname.value;
         const password = e.target.password.value;
         const major = e.target.major.value;
+
         try {
             const response = await fetch('http://localhost:8080/api/signup', {
                 method: 'POST',
