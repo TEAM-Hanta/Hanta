@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../css/home.css';
+import ButtonFetch from './buttonFetch';
 import Count from './count';
 import Report from './dropdown';
 import Reply from './reply';
@@ -41,7 +42,7 @@ function Detail({ value }) {
                             <FontAwesomeIcon icon="arrow-left" />
                             {v.post_type}게시판
                         </h1>{' '}
-                        <Report />
+                        <Report value={{ id: v.id }} />
                     </div>
 
                     <div>
@@ -65,7 +66,14 @@ function Detail({ value }) {
                         {v.content}
                     </div>
                     <div className="sibal">
-                        <Count value={{ likes: v.like_count, reply: v.reply_count }} />
+                        <button
+                            onClick={() => {
+                                ButtonFetch('scrap', v.id);
+                            }}
+                        >
+                            스크랩
+                        </button>
+                        <Count value={{ likes: v.like_count, reply: v.reply_count, id: v.id }} />
                     </div>
 
                     <div>

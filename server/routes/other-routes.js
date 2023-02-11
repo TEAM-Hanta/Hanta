@@ -27,8 +27,8 @@ router.get('/mypage/scrap', scrapController.myScrapList);
 
 // ---- 좋아요 ----
 
-// GET => api/posts/:pid/like 게시글에서 좋아요 버튼을 눌렀을 때
-router.get('/posts/:pid/like', likeController.saveLike);
+// POST => api/posts/:pid/like 게시글에서 좋아요 버튼을 눌렀을 때
+router.post('/posts/:pid/like', likeController.saveLike);
 
 // GET => api/like 내가 좋아요 한 글 - 필요없음
 // router.get('/like', likeController.myLikeList);

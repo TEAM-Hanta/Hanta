@@ -1,8 +1,9 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ButtonFetch from './buttonFetch';
 
-function Report() {
+function Report(props) {
     return (
         <Dropdown>
             <Dropdown.Toggle variant="">
@@ -10,11 +11,21 @@ function Report() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu style={{ backgroundColor: 'lightgray', fontWeight: 'bold' }}>
-                <Dropdown.Item href="#/action-1" style={{ fontWeight: 'bold' }}>
-                    신고
+                <Dropdown.Item
+                    onClick={() => {
+                        ButtonFetch('', props.value.id, 'delete');
+                    }}
+                    style={{ fontWeight: 'bold' }}
+                >
+                    삭제
                 </Dropdown.Item>
-                <Dropdown.Item href="#/action-2" style={{ fontWeight: 'bold' }}>
-                    캡쳐
+                <Dropdown.Item
+                    onClick={() => {
+                        ButtonFetch('report', props.value.id);
+                    }}
+                    style={{ fontWeight: 'bold' }}
+                >
+                    신고
                 </Dropdown.Item>
                 <Dropdown.Item href="/note" style={{ fontWeight: 'bold' }}>
                     쪽지보내기
