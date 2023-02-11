@@ -16,8 +16,8 @@ const router = express.Router();
 // GET => api/posts/ 전체 글 목록
 router.get('/', postController.getPosts);
 
-// POST => api/posts/ 글쓰기 - 제목 30자 이내, 내용 200자 이내
-router.post('/', [body('title').isLength({ max: 30 }), body('content').isLength({ max: 200 })], postController.createPost);
+// POST => api/posts/ 글쓰기 - 제목 5자 이상, 내용 200자 이내
+router.post('/', [body('title').isLength({ min: 5 }), body('content').isLength({ max: 200 })], postController.createPost);
 
 // GET => api/posts/popular 인기글 목록
 router.get('/popular', postController.getPopularPosts);
