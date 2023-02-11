@@ -6,6 +6,11 @@ export default class Modaly extends Component {
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
     const { open, close, header } = this.props;
 
+    const handlelogOUt = () => {
+      localStorage.removeItem("token");
+      close();
+    };
+
     return (
       <div className={open ? 'openModal modal' : 'modal'}>
         {open ? (
@@ -18,7 +23,7 @@ export default class Modaly extends Component {
             
             
             <footer>
-            <button style={{marginRight:"10px", backgroundColor:"skyblue", fontWeight:"bold"}} className="close" onClick={close}>
+            <button style={{marginRight:"10px", backgroundColor:"skyblue", fontWeight:"bold"}} className="close" onClick={handlelogOUt}>
                로그아웃
               </button>
               <button style={{backgroundColor:"pink", fontWeight:"bold"}} className="close" onClick={close}>
