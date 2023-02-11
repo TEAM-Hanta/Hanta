@@ -10,6 +10,8 @@ export default class Modaly extends Component {
       localStorage.removeItem("token");
       close();
     };
+    //기능활성화 완료
+    
 
     return (
       <div className={open ? 'openModal modal' : 'modal'}>
