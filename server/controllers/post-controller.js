@@ -54,24 +54,25 @@ exports.createPost = async (req, res, next) => {
 
 // 글 삭제하기
 exports.deletePost = async (req, res, next) => {
-    const postId = req.params.pid; // url에서 글 번호 받기
+    const post_id = req.params.pid; // url에서 글 번호 받기
+    const user_id = 1212; //req.userData.userId
     let post; // 삭제하려는 글 데이터
 
     try {
-        post = await Post.fetchOne(postId);
+        post = await Post.fetchOne(post_id);
     } catch (err) {
         const error = new HttpError('삭제하려는 글이 존재하지 않습니다.', 500);
         return next(error);
     }
 
-    if (post[0][0].user_id !== req.userData.userId) {
+    if (post[0][0].user_id !== user_id) {
         // 글쓴이와 현재 로그인한 회원의 아이디가 일치하지 않는다면,
         const error = new HttpError('글 삭제 권한 없음', 401);
         return next(error);
     }
 
     try {
-        await Post.deletePost(postId, post[0][0].user_id);
+        await Post.deletePost(post_id);
     } catch (err) {
         const error = new HttpError('글 삭제 실패', 500);
         return next(error);
