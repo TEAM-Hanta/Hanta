@@ -6,11 +6,11 @@ import { tokenState } from '../token/GlobalState';
 
 
 
-function Login(props) {
+function Login({setToken}) {
   const navigate = useNavigate();
 
-  const [tokenData, setTokenData] = useState('');
-  const [token, setToken] = useRecoilState(tokenState);
+  // const [tokenData, setTokenData] = useState('');
+  // const [token, setToken] = useRecoilState(tokenState);
 
   
   const onSubmitHandler = (e) => {
@@ -35,9 +35,9 @@ function Login(props) {
           throw new Error('Failed to fetch');
         })
         .then((v) => {
-          setTokenData(v.token);
-          localStorage.setItem("token", tokenData);
-          setToken(localStorage.getItem("token"));
+          localStorage.setItem("token", v.token);
+          setToken(v.token);
+          navigate('/home');
         })
         .catch((error) => {
           console.error(error);
@@ -54,7 +54,7 @@ function Login(props) {
       <div className="alternativeLogin">
         <label><Link to="/signUp" className="link">회원이 아니신가요?</Link></label>
         <br />
-        <button className="sibar" onClick={navigate('/home')}>로그인</button>
+        <button className="sibar">로그인</button>
       </div>
     );
     
