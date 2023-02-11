@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 function Home (){
+    console.log(localStorage);
     return(
     <>
     <div>
