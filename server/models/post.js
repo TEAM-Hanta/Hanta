@@ -32,7 +32,10 @@ module.exports = class Post {
 
     // user_id가 쓴 글 목록
     static findMyPost(user_id) {
-        return db.execute('SELECT * FROM post WHERE post.user_id = ?', [user_id]);
+        return db.execute(
+            'SELECT post.id,title, post.content, post.created_at, nickname, post.anonymous, reply.cnt as reply_count, like_count.cnt as like_count,post.user_id FROM post JOIN user ON post.user_id = user.id LEFT JOIN (select post_id , count(reply.post_id) as cnt from reply group by reply.post_id) reply ON post.id = reply.post_id LEFT JOIN (select post_id , count(like_count.post_id) as cnt from like_count group by like_count.post_id) like_count ON post.id = like_count.post_id WHERE post.user_id = ?',
+            [user_id]
+        );
     }
 
     // 인기글 목록 (일주일 이내 작성된 글 중에서 상위 1O개)
