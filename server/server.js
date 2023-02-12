@@ -94,8 +94,6 @@ const start = async () => {
     app.use(express.urlencoded({ extended: false }));
 };
 start();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // cors
 app.use((req, res, next) => {
