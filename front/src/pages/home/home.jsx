@@ -13,10 +13,10 @@ function Home (){
     <h2 style={{fontSize:"50px", fontWeight:"bold", textAlign:"center", color:"darkorange", marginLeft:"20px"}}>한아전 에브리타임 <img style={{width:"40px", height:"40px"}} alt="bg" src="img/jolla.png"/></h2>
     
     <div style={{margin:"0 auto", display:"block", borderTop:"3px solid gray",borderBottom:"3px solid gray", width:"400px"}}>
-    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link">전체</Link>
-    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link">유머</Link>
-    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link">익명</Link>
-    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link">뒷담</Link>
+    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link"  state={{props:"전체"}}>전체</Link>
+    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link"  state={{props:"자유"}}>자유</Link>
+    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link"  state={{props:"비밀"}}>비밀</Link>
+    <Link style={{margin:"35px", fontSize:"25px"}} to="/boardlist" className="link"  state={{props:"공부"}}>공부</Link>
     </div>
 
     </div>

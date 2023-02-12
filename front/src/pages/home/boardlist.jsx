@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React,{ Suspense, useEffect,useState } from "react";
 import { useReducer } from "react";
 import List from "./Components/list";
+import { useLocation } from "react-router-dom";
 
 function fetchPost() {
     let post;
@@ -44,11 +45,13 @@ function fetchPost1() {
 function BoardList() {
     const [list,setList] = useState([]);
     const [pop, setPop] = useState(0);
+	const location = useLocation();
+    const title = location.state.props;
 
     return (
         <>
             <div style={{paddingLeft:"15%"}}>
-                <h1>게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
+                <h1>{title}게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
             </div>
             <div style={{paddingLeft:"15%"}}>
                 <div>

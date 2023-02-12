@@ -12,7 +12,7 @@ const BottomNav = () => {
   return (
     <nav className="wrapper">
       {/* 하단 네비게이션 최상위 태그 */}
-      <Link to="/home" className="nav-link" onClick={() => setActiveNav(1)}>
+      <Link to="/" className="nav-link" onClick={() => setActiveNav(1)}>
         <div>
           <FontAwesomeIcon
             icon="home"

@@ -36,9 +36,9 @@ exports.createPost = async (req, res, next) => {
         return next(error);
     }
 
-    const { title, content, post_type, anonymous } = req.body;
+    const { title, content, userId, post_type, anonymous } = req.body;
 
-    const createPost = new Post(null, title, content, '1212', post_type, anonymous);
+    const createPost = new Post(null, title, content, userId, post_type, anonymous);
     // req.userData.userId  이거 나중에 로그인 회원가입 완료하고나서 원상복구할것
 
     try {

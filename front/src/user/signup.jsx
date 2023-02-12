@@ -3,8 +3,10 @@ import ErrorMessage from '../pages/home/Components/error';
 import './signup.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Link, useNavigate } from 'react-router-dom'
 
 function SignUp() {
+    const navigate = useNavigate();
     const [error, setError] = useState([]);
 
     const onSubmitHandler = async (e) => {
@@ -35,6 +37,7 @@ function SignUp() {
             }
 
             console.log('로그인 성공');
+            navigate("/login");
         } catch (err) {
             setError(err.message || '알 수 없는 에러가 발생했습니다.');
         }

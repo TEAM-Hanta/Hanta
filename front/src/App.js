@@ -47,10 +47,8 @@ const App = () => {
 				{token ? (
 					<>
 						<Routes>
-							<Route path="/home" element={<Home />} />
+							<Route path="/" element={<Home />} />
 							<Route path="/boardlist" element={<Board />} />
-							<Route path="/" element={<Login />} /> {/* 추후 home주소로 등록시키고 미 로그인시 접근할때 로그인창이 뜨도록 하기 */}
-							<Route path="/signup" element={<Signup />} />
 							<Route path="/license" element={<License />} />
 							<Route path="/notice" element={<Notice />} />
 							<Route path="/mypage" element={<Mypage />} />
@@ -62,8 +60,11 @@ const App = () => {
 
 					</>
 				) : (
-					<>
-						<Login setToken={setToken}/> test
+					<>  
+						<Routes>
+							<Route path="/*" element={<Login setToken={setToken}/>}/>
+							<Route path="/signup" element={<Signup />} />
+						</Routes>
 					</>
 				)}
 		</div>

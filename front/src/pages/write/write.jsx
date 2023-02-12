@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import '../css/write.css';
 import ErrorMessage from '../home/Components/error';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Write() {
     const [error, setError] = useState([]);
+    const navigate = useNavigate();
 
     const [isChecked, setIsChecked] = useState(false);
 
@@ -15,6 +17,7 @@ function Write() {
         const content = e.target.content.value;
         const post_type = e.target.post_type.value; //라디오 버튼으로 게시판 추가하기
         const anonymous = isChecked;
+        const userId = localStorage.getItem("userId");
 
         try {
             const response = await fetch('http://localhost:8080/api/posts/', {
@@ -25,11 +28,13 @@ function Write() {
                 body: JSON.stringify({
                     title,
                     content,
+                    userId,
                     post_type,
                     anonymous,
                 }),
             });
             const data = await response.json();
+            navigate('/');
 
             if (!response.ok) {
                 throw new Error(data.message);
@@ -58,7 +63,7 @@ function Write() {
                             <option value="테스트">테스트</option>
                         </select>
 
-                        <button className="buttons">올리기</button>
+                        <button className="buttons" >올리기</button>
                     </h1>
                 </div>
                 {error.length !== 0 ? <ErrorMessage error={error} /> : null}

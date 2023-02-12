@@ -37,8 +37,9 @@ function Login({setToken}) {
         })
         .then((v) => {
           localStorage.setItem("token", v.token);
+          localStorage.setItem("userId", v.userId);
           setToken(v.token);
-          navigate('/home');
+          navigate('/');
         })
         .catch((error) => {
           console.error(error);
