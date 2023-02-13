@@ -50,11 +50,11 @@ function SignUp() {
                         <div className="inputking">
                             <img style={{ width: '270px', height: '200px' }} alt="intro" src="img/signup 2.png" />
                             {error.length !== 0 ? <ErrorMessage error={error} /> : null}
-                            <input className="input" type="text" id="title_txt" placeholder=" 아이디" name="id" />
-                            <input className="input" type="text" id="title_txt" placeholder=" 닉네임" name="nickname" />
-                            <input className="input" type="password" id="title_txt" placeholder=" 비밀번호" name="password" />
+                            <input className="input" style={{fontSize:"20px"}} type="text" id="title_txt" placeholder=" 아이디" name="id" />
+                            <input className="input" style={{fontSize:"20px"}} type="text" id="title_txt" placeholder=" 닉네임" name="nickname" />
+                            <input className="input" style={{fontSize:"20px"}} type="password" id="title_txt" placeholder=" 비밀번호" name="password" />
                             {/* <input className="input" type="password" id="title_txt" placeholder=" 비밀번호 확인" name="password" /> */}
-                            <input className="input" type="text" id="title_txt" placeholder=" 전공학과" name="major" />
+                            <input className="input" style={{fontSize:"20px"}} type="text" id="title_txt" placeholder=" 전공학과" name="major" />
                             <button className="button">회원가입</button>
                         </div>
                     </form>
