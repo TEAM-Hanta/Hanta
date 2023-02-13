@@ -31,10 +31,10 @@
     padding-left: 10px;
     padding-right: 10px;
     color: gray;
-    margin-top: 30px;
     background-color: lightgray;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
+    width: 80px;
 }
 
 .sibar:hover {
@@ -43,12 +43,11 @@
     padding-left: 10px;
     padding-right: 10px;
     color: black;
-    margin-top: 30px;
     background-color: gray;
 }
 
 
 .alternativeLogin {
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
 }
