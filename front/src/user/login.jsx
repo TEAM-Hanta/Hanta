@@ -44,22 +44,22 @@ function Login({ setToken }) {
     const OtherMethods = (props) => (
         <div className="alternativeLogin">
             <label>
-                <Link to="/signUp" className="link">
+                <Link style={{ fontSize: '18px' }} to="/signUp" className="link">
                     회원이 아니신가요?
                 </Link>
             </label>
             <br />
-            <button className="sibar">로그인</button>
+            <button className="button">로그인</button>
         </div>
     );
 
     return (
         <div className="loginy">
-            <img style={{ width: '300px', height: '300px', paddingBottom: '20px' }} alt="bg" src="img/hanta-Logo.png" />
+            <img style={{ width: '300px', height: '270px' }} alt="bg" src="img/hanta-Logo.png" />
             <form onSubmit={onSubmitHandler}>
-                <input className="input" style={{ fontSize: '22px' }} description="id" placeholder=" 아이디" type="text" name="id" />
+                <input className="input" style={{ fontSize: '20px' }} description="id" placeholder=" 아이디" type="text" name="id" />
                 <br />
-                <input className="input" style={{ fontSize: '22px' }} description="Password" placeholder=" 비밀번호" type="password" name="password" />
+                <input className="input" style={{ fontSize: '20px' }} description="Password" placeholder=" 비밀번호" type="password" name="password" />
                 {error.length !== 0 ? <ErrorMessage error={error} /> : null}
 
                 <OtherMethods />
