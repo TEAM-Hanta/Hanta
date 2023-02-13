@@ -42,11 +42,35 @@ function fetchPost1() {
 
 
 }
+function fetchSearch(search) {
+    let post;
+    const suspender = fetch(`http://localhost:8080/api/posts/search?result=${search}`)
+        .then((response) => response.json())
+        .then((data) => {
+        post = data;
+        });
+    return {
+        read() {
+            if(!post) {
+                throw suspender;
+            } else {
+                return post;
+            }
+        }
+    };
+
+
+}
 function BoardList() {
-    const [list,setList] = useState([]);
+    const [search,setSearch] = useState('');
     const [pop, setPop] = useState(0);
 	const location = useLocation();
     const title = location.state.props;
+    
+    const handleChange = event => {
+    setSearch(event.target.value);
+    };
+
 
     return (
         <>
@@ -58,16 +82,23 @@ function BoardList() {
 
                     {pop === 0? <button style={{borderRadius:"10px", borderColor:"grey"}} onClick = {()=>{setPop(1)}}>인기글</button> : <button style={{borderRadius:"10px", borderColor:"grey"}} onClick = {()=>{setPop(0)}}>최신글</button>}
                     
-                    
-                    <input style={{borderRadius:"10px"}}></input>
-                    <FontAwesomeIcon icon="magnifying-glass"/>
+                    <input style={{borderRadius:"10px"}}
+                        type="text" 
+                        placeholder="Search..."
+                        value={search} onChange = {handleChange}>
+                    </input><FontAwesomeIcon icon="magnifying-glass"/>
                 </div>
                 {/*차후 컨포넌트로 리스트 만들예정*/}
             </div>
 
             <div style={{textAlign:"center"}}>
             <Suspense fallback = {<>... 로딩</>}>
-                <List value ={pop === 0? fetchPost():fetchPost1()}></List>
+                {
+                    search === ''?
+                    <List value ={pop === 0? fetchPost():fetchPost1()}></List> :
+                    <List value = {fetchSearch(search)}></List>
+
+                }
             </Suspense>
             </div>
             
