@@ -24,7 +24,7 @@ function List({ value }) {
         <>
             {
                 value.map((val) =>
-                    <Card className="cardo">
+                    <Card className="cardo" style={{marginBottom:"10px", marginTop:"10px"}}>
                         <Card.Body>
                             <Card.Title>
                                 <div className="name">
