@@ -88,7 +88,6 @@ function BoardList() {
                         value={search} onChange = {handleChange}>
                     </input><FontAwesomeIcon icon="magnifying-glass"/>
                 </div>
-                {/*차후 컨포넌트로 리스트 만들예정*/}
             </div>
 
             <div style={{textAlign:"center"}}>
