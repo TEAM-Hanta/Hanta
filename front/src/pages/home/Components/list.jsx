@@ -29,9 +29,13 @@ function List({value}) {
                 </div>
                 
                 <div>
-                <div style={{fontSize:"20px"}}> 내용: {v.content.substr(0,5)}... {/* 내용 축약 시켜서 내보내기 */}
+                <div style={{fontSize:"20px"}}> 내용: {v.content.substr(0,10)}... {/* 내용 축약 시켜서 내보내기 */}
                 <div className="sibal">
-                <Count value ={{likes : v.like_count,reply : v.reply_count}}/>
+                <FontAwesomeIcon icon="thumbs-up" />
+                {v.like_count === null ? 0 : v.like_count}
+                &nbsp;&nbsp;
+                <FontAwesomeIcon icon="comment" />
+                {v.reply_count === null ? 0 : v.reply_count}
                 </div>
                 </div>
                 
