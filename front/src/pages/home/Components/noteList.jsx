@@ -7,9 +7,8 @@ function NoteList({ value }) {
     const data = value.read();
     return (
         <>
-            {data.length == 0
-                ? '쪽지가 없습니다.'
-                : data.map((v) => (
+            {data.length
+                ? data.map((v) => (
                       <div key={v.id}>
                           <div className="list">
                               <Link style={{ textDecoration: 'none', color: 'black' }} to={'/note/' + v.id}>
@@ -31,7 +30,8 @@ function NoteList({ value }) {
                               </Link>
                           </div>
                       </div>
-                  ))}
+                  ))
+                : '쪽지가 없습니다.'}
         </>
     );
 }
