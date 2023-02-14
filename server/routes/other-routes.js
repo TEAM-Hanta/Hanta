@@ -12,7 +12,7 @@ const licenseController = require('../controllers/license_controller');
 const router = express.Router();
 
 // 유효 토큰 검증 미들웨어
-// router.use(verifyToken);
+router.use(verifyToken);
 
 // ---- 마이페이지 ----
 
