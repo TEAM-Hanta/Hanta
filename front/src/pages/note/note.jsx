@@ -4,7 +4,11 @@ import '../css/write.css';
 
 function fetchNote1() {
     let note;
-    const suspender = fetch('http://localhost:8080/api/note/receive')
+    const suspender = fetch('http://localhost:8080/api/note/receive', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             note = data;
@@ -22,7 +26,11 @@ function fetchNote1() {
 
 function fetchNote2() {
     let note;
-    const suspender = fetch('http://localhost:8080/api/note/send')
+    const suspender = fetch('http://localhost:8080/api/note/send', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             note = data;

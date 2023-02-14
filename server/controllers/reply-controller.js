@@ -115,7 +115,7 @@ exports.deleteReply = async (req, res, next) => {
 
 // 댓글 알림 리스트 출력
 exports.replyNoticeList = async (req, res, next) => {
-    const user_id = 1212; // req.userData.userId;
+    const user_id = req.userData.userId; // req.userData.userId;
 
     let replyNoticeList;
     try {
@@ -130,7 +130,7 @@ exports.replyNoticeList = async (req, res, next) => {
 // 내가 댓글단 글
 exports.myReplyList = async (req, res, next) => {
     let replyList;
-    const user_id = 1212;
+    const user_id = req.userData.userId;
     try {
         [replyList] = await Reply.findMyReply(user_id);
     } catch (err) {

@@ -18,7 +18,7 @@ exports.licenseList = async (req, res, next) => {
 // 자격증 알림신청
 exports.applyForNotification = async (req, res, next) => {
     const license_name = req.body.license_name;
-    const user_id = 1212; //req.userData.userId;
+    const user_id = req.userData.userId;
     const findUser = await License.findUser(user_id, license_name);
     let test = [
         { exam_date: '2023-01-26', exam_type: '필기시험' },
@@ -50,7 +50,7 @@ exports.applyForNotification = async (req, res, next) => {
 // 당일 보내줘야하는 자격증 알림 출력 (당일날짜 +7 = exam_date라면 "00자격증 필기 원서접수까지 일주일 남았습니다." 출력)
 
 exports.todayLicenseList = async (req, res, next) => {
-    const user_id = 1212; // req.userData.userId;
+    const user_id = req.userData.userId;
 
     let todayLicenseList;
     try {

@@ -20,21 +20,22 @@ function Reply(props) {
 		// // const anonymous = isChecked;
 		// const userId = localStorage.getItem("userId");
 
-		try {
-			const response = await fetch("http://localhost:8080/api/posts/reply2", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					// content,
-					// userId,
-					// post_type,
-					// anonymous,
-				}),
-			});
-			const data = await response.json();
-			// navigate('/');
+        try {
+            const response = await fetch('http://localhost:8080/api/posts/reply2', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                },
+                body: JSON.stringify({
+                    // content,
+                    // userId,
+                    // post_type,
+                    // anonymous,
+                }),
+            });
+            const data = await response.json();
+            // navigate('/');
 
 			if (!response.ok) {
 				throw new Error(data.message);

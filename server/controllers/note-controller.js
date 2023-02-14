@@ -3,7 +3,7 @@ const HttpError = require('../models/http-error');
 const Note = require('../models/note');
 
 exports.sendNote = async (req, res, next) => {
-    const send_user_id = 1212;
+    const send_user_id = req.userData.userId;
     const receive_user_id = req.body.id;
     const content = req.body.content;
 
@@ -24,7 +24,7 @@ exports.sendNote = async (req, res, next) => {
 exports.sendNoteList = async (req, res, next) => {
     let noteList;
     try {
-        [noteList] = await Note.sendNoteList(1212);
+        [noteList] = await Note.sendNoteList(req.userData.userId);
     } catch (err) {
         const error = new HttpError('보낸 쪽지 불러오기 실패', 500);
         return next(error);
@@ -36,7 +36,7 @@ exports.sendNoteList = async (req, res, next) => {
 exports.receiveNoteList = async (req, res, next) => {
     let noteList;
     try {
-        [noteList] = await Note.receiveNoteList(1212);
+        [noteList] = await Note.receiveNoteList(req.userData.userId);
     } catch (err) {
         const error = new HttpError('받은 쪽지 불러오기 실패', 500);
         return next(error);

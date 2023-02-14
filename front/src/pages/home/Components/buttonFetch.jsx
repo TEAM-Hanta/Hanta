@@ -3,6 +3,7 @@ function ButtonFetch(name, id, type = 'POST') {
         method: type,
         headers: {
             'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
         body: {
             // 로그인 되면 아이디 전달

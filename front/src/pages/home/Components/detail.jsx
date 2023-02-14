@@ -16,7 +16,11 @@ function Detail({ value }) {
     console.log(params);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/posts/${params.id}/reply`) //리플 소환
+        fetch(`http://localhost:8080/api/posts/${params.id}/reply`, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+        }) //리플 소환
             .then((response) => response.json())
             .then((data) => setReply(data))
             .catch((rejected) => {

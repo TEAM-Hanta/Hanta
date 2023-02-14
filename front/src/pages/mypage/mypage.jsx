@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 
 function fetchPost1() {
     let post;
-    const suspender = fetch('http://localhost:8080/api/mypage/posts')
+    const suspender = fetch('http://localhost:8080/api/mypage/posts', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
@@ -24,7 +28,11 @@ function fetchPost1() {
 
 function fetchPost2() {
     let post;
-    const suspender = fetch('http://localhost:8080/api/mypage/reply')
+    const suspender = fetch('http://localhost:8080/api/mypage/reply', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
@@ -42,7 +50,11 @@ function fetchPost2() {
 
 function fetchPost3() {
     let post;
-    const suspender = fetch('http://localhost:8080/api/mypage/scrap')
+    const suspender = fetch('http://localhost:8080/api/mypage/scrap', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
