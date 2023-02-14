@@ -5,32 +5,33 @@ import { Link } from 'react-router-dom';
 
 function NoteList({ value }) {
     const data = value.read();
-
     return (
         <>
-            {data.map((v) => (
-                <div key={v.id}>
-                    <div className="list">
-                        <Link style={{ textDecoration: 'none', color: 'black' }} to={'/note/' + v.id}>
-                            <div>
-                                <br />
-                                <h4 style={{ fontSize: '30px', fontWeight: 'bold' }}>
-                                    <FontAwesomeIcon icon="user" />
-                                    {v.nickname}
-                                </h4>
-                                <p>{v.note_read_type === 'Y' ? '읽음' : '읽지않음'}</p>
-                            </div>
+            {data.length == 0
+                ? '쪽지가 없습니다.'
+                : data.map((v) => (
+                      <div key={v.id}>
+                          <div className="list">
+                              <Link style={{ textDecoration: 'none', color: 'black' }} to={'/note/' + v.id}>
+                                  <div>
+                                      <br />
+                                      <h4 style={{ fontSize: '30px', fontWeight: 'bold' }}>
+                                          <FontAwesomeIcon icon="user" />
+                                          {v.nickname}
+                                      </h4>
+                                      <p>{v.note_read_type === 'Y' ? '읽음' : '읽지않음'}</p>
+                                  </div>
 
-                            <div>
-                                <div style={{ fontSize: '20px' }}>
-                                    {' '}
-                                    내용: {v.content.substr(0, 5)}... {/* 내용 축약 시켜서 내보내기 */}
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-            ))}
+                                  <div>
+                                      <div style={{ fontSize: '20px' }}>
+                                          {' '}
+                                          내용: {v.content.substr(0, 5)}... {/* 내용 축약 시켜서 내보내기 */}
+                                      </div>
+                                  </div>
+                              </Link>
+                          </div>
+                      </div>
+                  ))}
         </>
     );
 }
