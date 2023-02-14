@@ -1,11 +1,9 @@
 const HttpError = require('../models/http-error');
 const Like = require('../models/like');
 
-// 로그인 구현되면 1212 -> 현재 로그인된 아이디로 변경
-
 // 좋아요 버튼을 눌렀을 때 DB에 저장
 exports.saveLike = async (req, res, next) => {
-    const user_id = 1212;
+    const user_id = req.userData.userId;
     const post_id = req.params.pid;
     const findUser = await Like.findUser(user_id, post_id);
 
@@ -33,7 +31,7 @@ exports.saveLike = async (req, res, next) => {
 // 내가 좋아요 한 글
 // exports.myLikeList = async (req, res, next) => {
 //     let likeList;
-//     const user_id = 1212;
+//     const user_id = req.userData.userId;
 //     try {
 //         [likeList] = await Like.myLikeList(user_id);
 //     } catch (err) {

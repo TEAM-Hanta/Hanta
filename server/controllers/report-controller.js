@@ -11,7 +11,7 @@ exports.report = async (req, res, next) => {
     //     const error = new HttpError('신고된 글을 찾을 수 없음', 500);
     //     return next(error);
     // }
-    const user_id = 1212; // user_id는 해당 글을 신고한 유저
+    const user_id = req.userData.userId; // user_id는 해당 글을 신고한 유저
     const report = new Report(null, user_id, post_id);
 
     try {
