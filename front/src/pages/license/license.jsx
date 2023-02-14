@@ -1,10 +1,14 @@
-import React, { Suspense } from "react";
-import Licensecard from "./licensecard";
-import "../css/license.css"
+import React, { Suspense } from 'react';
+import Licensecard from './licensecard';
+import '../css/license.css';
 
 function fetchlicense() {
     let license;
-    const suspender = fetch('http://localhost:8080/api/license')
+    const suspender = fetch('http://localhost:8080/api/license', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             const obj = data.reduce((acc, val) => {
@@ -17,7 +21,7 @@ function fetchlicense() {
             const majorArr = Object.keys(obj);
             license = majorArr.map((major) => obj[major]);
         });
-        // {컴공: [...], 요리사: [..]}
+    // {컴공: [...], 요리사: [..]}
     return {
         read() {
             if (!license) {
@@ -25,20 +29,19 @@ function fetchlicense() {
             } else {
                 return license;
             }
-        }
+        },
     };
-
-
 }
 
 function License() {
     return (
         <>
             <div>
-                <h1 style={{ fontWeight: "bold", fontSize: "30px", marginTop: "10px", marginLeft: "20px" }}>자격증 알리미</h1>
-            </div><br />
+                <h1 style={{ fontWeight: 'bold', fontSize: '30px', marginTop: '10px', marginLeft: '20px' }}>자격증 알리미</h1>
+            </div>
+            <br />
             <Suspense fallback={<>... 로딩</>}>
-                <Licensecard value={fetchlicense()} ></Licensecard>
+                <Licensecard value={fetchlicense()}></Licensecard>
             </Suspense>
         </>
     );
