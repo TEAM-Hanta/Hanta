@@ -27,21 +27,21 @@ router.get('/mypage/scrap', scrapController.myScrapList);
 
 // ---- 좋아요 ----
 
-// POST => api/posts/:pid/like 게시글에서 좋아요 버튼을 눌렀을 때
-router.post('/posts/:pid/like', likeController.saveLike);
+// GET => api/posts/:pid/like 게시글에서 좋아요 버튼을 눌렀을 때
+router.get('/posts/:pid/like', likeController.saveLike);
 
 // GET => api/like 내가 좋아요 한 글 - 필요없음
 // router.get('/like', likeController.myLikeList);
 
 // ---- 스크랩 ----
 
-// POST => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
-router.post('/posts/:pid/scrap', scrapController.saveScrap);
+// GET => api/posts/:pid/scrap 게시글에서 스크랩 버튼을 눌렀을 때
+router.get('/posts/:pid/scrap', scrapController.saveScrap);
 
 // ---- 신고 ----
 
-// POST => api/posts/:pid/report 게시글 신고 버튼 눌렀을 때
-router.post('/posts/:pid/report', reportController.report);
+// GET => api/posts/:pid/report 게시글 신고 버튼 눌렀을 때
+router.get('/posts/:pid/report', reportController.report);
 
 // ---- 자격증 ----
 
