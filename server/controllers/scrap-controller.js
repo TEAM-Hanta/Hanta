@@ -1,12 +1,10 @@
 const HttpError = require('../models/http-error');
 const Scrap = require('../models/scrap');
 
-// 로그인 구현되면 1212 -> 현재 로그인된 아이디로 변경
-
 // 스크랩 버튼을 눌렀을 때 DB에 저장
 exports.saveScrap = async (req, res, next) => {
     const post_id = req.params.pid;
-    const user_id = 1212;
+    const user_id = req.userData.userId;
     const findUser = await Scrap.findUser(user_id, post_id);
 
     if (findUser[0].length > 0) {
@@ -33,7 +31,7 @@ exports.saveScrap = async (req, res, next) => {
 // 내가 스크랩 한 글
 exports.myScrapList = async (req, res, next) => {
     let scrapList;
-    const user_id = 1212;
+    const user_id = req.userData.userId;
     try {
         [scrapList] = await Scrap.myScrapList(user_id);
     } catch (err) {

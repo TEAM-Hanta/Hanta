@@ -39,7 +39,6 @@ exports.createPost = async (req, res, next) => {
     const { title, content, userId, post_type, anonymous } = req.body;
 
     const createPost = new Post(null, title, content, userId, post_type, anonymous);
-    // req.userData.userId  이거 나중에 로그인 회원가입 완료하고나서 원상복구할것
 
     try {
         await createPost.save();
@@ -55,7 +54,7 @@ exports.createPost = async (req, res, next) => {
 // 글 삭제하기
 exports.deletePost = async (req, res, next) => {
     const post_id = req.params.pid; // url에서 글 번호 받기
-    const user_id = 1212; //req.userData.userId
+    const user_id = req.userData.userId;
     let post; // 삭제하려는 글 데이터
 
     try {
@@ -86,9 +85,8 @@ exports.deletePost = async (req, res, next) => {
 exports.myPostList = async (req, res, next) => {
     let getMyPost;
 
-    const user_id = '1212';
+    const user_id = req.userData.userId;
 
-    // const user_id = req.userData.userId; (로그인 구현후 복구)
     try {
         getMyPost = await Post.findMyPost(user_id);
     } catch (err) {

@@ -1,12 +1,16 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Suspense, useEffect, useState } from "react";
-import { useReducer } from "react";
-import List from "./Components/list";
-import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Suspense, useEffect, useState } from 'react';
+import { useReducer } from 'react';
+import List from './Components/list';
+import { useLocation } from 'react-router-dom';
 
 function fetchPost() {
     let post;
-    const suspender = fetch("http://localhost:8080/api/posts/")
+    const suspender = fetch('http://localhost:8080/api/posts/', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
@@ -23,7 +27,11 @@ function fetchPost() {
 }
 function fetchPost1() {
     let post;
-    const suspender = fetch("http://localhost:8080/api/posts/popular")
+    const suspender = fetch('http://localhost:8080/api/posts/popular', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
@@ -40,7 +48,11 @@ function fetchPost1() {
 }
 function fetchSearch(search) {
     let post;
-    const suspender = fetch(`http://localhost:8080/api/posts/search?result=${search}`)
+    const suspender = fetch(`http://localhost:8080/api/posts/search?result=${search}`, {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
         .then((response) => response.json())
         .then((data) => {
             post = data;
@@ -56,7 +68,7 @@ function fetchSearch(search) {
     };
 }
 function BoardList() {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
     const [pop, setPop] = useState(0);
     const location = useLocation();
     const title = location.state.props;
