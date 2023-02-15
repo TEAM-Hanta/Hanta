@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import Report from "./dropdown";
 import "./reply.css";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 function Reply(props) {
 	const [showReply, setShowReply] = useState(props.value.map(() => false));
@@ -10,7 +13,7 @@ function Reply(props) {
 			const newState = [...prevState];
 			newState[index] = !newState[index];
 			return newState;
-		});
+		});	
 
 	const onSubmitHandler = async (e) => {
 		e.preventDefault();
@@ -44,7 +47,19 @@ function Reply(props) {
 			// setError(err.message || '알 수 없는 에러가 발생했습니다.');
 		}
 	};
-	console.log(props.value);
+
+
+	const [showNotification, setShowNotification] = useState(false);
+
+	useEffect(() => {
+	  setShowNotification(true);
+	}, []);
+  
+	const handleButtonClick = () => {
+	  NotificationManager.info('신고되었습니다','댓글', 3000);
+	}
+
+
 	return (
 		<>
 			<div>
@@ -55,13 +70,14 @@ function Reply(props) {
 							<h4>프로필 : {reply.anonymous === 1 ? "익명" : reply.nickname}</h4>
 							<h4>{reply.content}</h4>
 							<a>{new Date(reply.created_at).toLocaleString("ko-KR", { timeZone: "UTC" })}</a>
-							<button onClick={handleReplyClick(idx)}>답글</button>
+							{reply.layer ? <></>: <button onClick={handleReplyClick(idx)}>답글</button>}
 							{showReply[idx] && (
 								<form>
 									<input type="text" />
 									<button type="submit">작성</button>
 								</form>
-							)}
+							)}<button  onClick={handleButtonClick}>신고</button>
+							{showNotification && <NotificationContainer />}
 						</div>
 					</div>
 				))}

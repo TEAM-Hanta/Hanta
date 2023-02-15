@@ -6,6 +6,8 @@ import ButtonFetch from './buttonFetch';
 import Count from './count';
 import Report from './dropdown';
 import Reply from './reply';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 function Detail({ value }) {
     const data = value.read();
@@ -14,6 +16,12 @@ function Detail({ value }) {
     const [reply, setReply] = useState([]);
 
     console.log(params);
+
+    const [showReply, setShowReply] = useState(false);
+    const handleReplyClick = () => {
+    setShowReply(true);
+    };
+
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/posts/${params.id}/reply`, {
@@ -34,6 +42,16 @@ function Detail({ value }) {
 
         return 0;
     }); // group번호로  댓글{대댓글} 로 분리
+
+    const [showNotification, setShowNotification] = useState(false);
+
+	useEffect(() => {
+	  setShowNotification(true);
+	}, []);
+  
+	const handleButtonClick = () => {
+	  NotificationManager.info('스크랩완료!','게시글', 3000);
+	}
 
     return (
         <>
@@ -70,14 +88,18 @@ function Detail({ value }) {
                         {v.content}
                     </div>
                     <div className="sibal">
-                        <button
-                            onClick={() => {
-                                ButtonFetch('scrap', v.id);
-                            }}
-                        >
-                            스크랩
-                        </button>
+                        <button  onClick={handleButtonClick}>스크랩</button>
+							{showNotification && <NotificationContainer />}
+
                         <Count value={{ likes: v.like_count, reply: v.reply_count, id: v.id }} />
+
+                        <button onClick={handleReplyClick}>답글</button>
+                        {showReply && (
+								<form>
+									<input type="text" />
+									<button type="submit">작성</button>
+								</form>
+							)}
                     </div>
 
                     <div>
