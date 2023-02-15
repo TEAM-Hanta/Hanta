@@ -15,8 +15,6 @@ const Noticecpi = makeStyles()((theme) => ({
 const Noticecp = ({value}) => {
     const props = value.read();
     const {classes} = Noticecpi();
-    console.log('hi');
-    console.log(props);
     return (<>
         {props.map((v) => (
             <div key={v.index}>            
@@ -32,7 +30,7 @@ const Noticecp = ({value}) => {
         </Typography>
         </Paper>
         </div>
-    ))};
+    ))}
     </>
     );
 }
