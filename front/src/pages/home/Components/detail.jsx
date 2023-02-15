@@ -26,7 +26,7 @@ function Detail({ value }) {
     useEffect(() => {
         fetch(`http://localhost:8080/api/posts/${params.id}/reply`, {
             headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token'),
+                Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }) //리플 소환
             .then((response) => response.json())
@@ -56,34 +56,35 @@ function Detail({ value }) {
     return (
         <>
             {data.map((v) => (
-                <div key={v.id}>
-                    <div style={{ paddingLeft: '8%' }}>
-                        {' '}
+                <div style={{margin:"0 auto", display:"block", width:"370px"}} key={v.id}>
+                    <div>
                         {/*이쪽 div칸에 신고버튼 ui집어넣기 */}
-                        <h1>
-                            <FontAwesomeIcon icon="arrow-left" />
+                        <h1 style={{fontSize:"35px"}}>
+                            <button style={{border:"none", backgroundColor:"white"}}>
+                                <FontAwesomeIcon icon="arrow-left" />
+                            </button>
                             {v.post_type}게시판
-                        </h1>{' '}
-                        <Report value={{ id: v.id }} />
+                            <Report value={{ id: v.id }} />
+                        </h1>
                     </div>
-
+                        <br/>
                     <div>
                         {/*유저 프로필과 닉네임 글작성 div */}
-                        <h2>[유저 프로필]{v.anonymous === 1 ? '익명' : v.nickname}</h2>
-                        {new Date(v.created_at).toLocaleString('en-US', { timeZone: 'UTC' })}
+                        <h2>[유저 프로필]{v.anonymous === 1 ? "익명" : v.nickname}</h2>
+                        {new Date(v.created_at).toLocaleString("en-US", { timeZone: "UTC" })}
                     </div>
 
                     <br />
 
                     <div>
-                        {' '}
+                        {" "}
                         {/*글 제목 div */}
                         <h1>{v.title}</h1>
                     </div>
 
                     <br />
                     <div>
-                        {' '}
+                        {" "}
                         {/* 글내용 div */}
                         {v.content}
                     </div>
@@ -103,7 +104,7 @@ function Detail({ value }) {
                     </div>
 
                     <div>
-                        {' '}
+                        {" "}
                         {/*댓글 영역 */}
                         <Reply value={reply} />
                     </div>
