@@ -65,9 +65,9 @@ function Write() {
                         </box>
                         
                         <select className="select" name="post_type" id="post_type">
-                            <option value="자유"> 자유</option>
-                            <option value="유머">유머</option>
-                            <option value="테스트">테스트</option>
+                            <option value="자유">자유</option>
+                            <option value="비밀">비밀</option>
+                            <option value="공부">공부</option>
                         </select>
                      
                     </h1>

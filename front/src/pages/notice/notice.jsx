@@ -1,38 +1,88 @@
 import Noticecp from './noticecp';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense,useEffect, useState } from 'react';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
+
+function fetchPost1() {
+    let post;
+    const suspender = fetch('http://localhost:8080/api/notice/license', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            post = data;
+            console.log(post);
+        });
+    return {
+        read() {
+            if (!post) {
+                throw suspender;
+            } else {
+                return post;
+            }
+        },
+    };
+}
+
+function fetchPost2() {
+    let post;
+    const suspender = fetch('http://localhost:8080/api/notice/reply', {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            post = data;
+            console.log(post);
+        });
+    return {
+        read() {
+            if (!post) {
+                throw suspender;
+            } else {
+                return post;
+            }
+        },
+    };
+}
+
 
 function Notice() {
-    const [noti, setNoti] = useState([
-        { id: 1, title: '알림제목', date: '알림날짜' },
-        { id: 2, title: '알림제목', date: '알림날짜' },
-    ]);
-
-    const str = 'notice';
+    
+    const [showNotification, setShowNotification] = useState(false);
+    const [showContent, setShowContent] = useState(true);
 
     useEffect(() => {
-        fetch(`https://localhost:8080/${str}`, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token'),
-            },
-        }) //재사용
-            .then((response) => response.json())
-            .then((data) => setNoti(data))
-            .catch((rejected) => {
-                console.log(rejected);
-            });
+    setShowNotification(true);
     }, []);
+
+    const handleButtonClick = () => {
+    NotificationManager.info('삭제되었습니다','알림', 3000);
+    setShowContent(false);
+    }
 
     return (
         <>
             <div>
                 <h1 style={{ fontWeight: 'bold', fontSize: '30px', marginLeft: '20px' }}>알림</h1>
             </div>
-            {noti?.map((props) => (
-                <div key={props.id}>
-                    <Noticecp value={props} />
-                </div>
-            ))}
-            ;
+            <button onClick={handleButtonClick}>알림삭제</button>            
+            {showNotification && <NotificationContainer />}
+            {showContent &&(
+
+                <Suspense fallback={<>... 로딩</>}>
+                <Noticecp value={fetchPost1()}></Noticecp>
+                <Noticecp value={fetchPost2()}></Noticecp>
+                 </Suspense>
+            )}
+            {!showContent && <div>알림이 없습니다.</div>}
+            
+            
+
         </>
     );
 }

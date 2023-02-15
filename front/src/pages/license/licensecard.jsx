@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState,useEffect } from "react";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css'; 
+import Noti from "./notice";
 
 
 
@@ -25,21 +26,6 @@ function Licensecard({ value }) {
 }
 
 function List({ value }) {
-    console.log({value})
-
-	const [showReply, setShowReply] = useState(value.value.map(() => false));
-
-	const handleReplyClick = (index) => () =>
-		setShowReply((prevState) => {
-			const newState = [...prevState];
-			newState[index] = !newState[index];
-			return newState;
-            
-		});	
-
-    const handleButtonClick = (name) => {
-        NotificationManager.info('알림신청완료!',name, 3000);
-    }
     return (
         <>
             {
@@ -52,12 +38,7 @@ function List({ value }) {
                                 <div className="name">
                                     {val.name}
                                 </div>
-                                <button onClick={handleReplyClick(idx)}>알림신청</button>
-                                <button className="licensebutton" onClick={handleButtonClick(val.name)}>알림신청</button>
-                                {showReply[idx] && (
-                                    <form><NotificationContainer />
-								</form>
-                                )} 
+                                <Noti value = {val.name}></Noti>
                             </Card.Title>
                         </Card.Body>
                     </Card>
