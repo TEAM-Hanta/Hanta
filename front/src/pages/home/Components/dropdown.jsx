@@ -5,6 +5,7 @@ import ButtonFetch from './buttonFetch';
 
 function Report(props) {
     return (
+        <button style={{border:"none", backgroundColor:"white", float:"right"}}>
         <Dropdown>
             <Dropdown.Toggle variant="">
                 <FontAwesomeIcon style={{ fontSize: '35px' }} icon="ellipsis-vertical" />
@@ -32,6 +33,7 @@ function Report(props) {
                 </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
+        </button>
     );
 }
 

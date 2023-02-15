@@ -33,7 +33,7 @@
     width: 320px;
     resize: none;
     border: solid 1px #ababab;
-    height: 420px;
+    height: 450px;
     font-size: 22px;
     font-weight: bold;
     border-radius: 5px;
@@ -43,7 +43,7 @@
 #content_txt:focus { outline : none; }
 
 .buttons {
-    float: center;
+    float: right;
     font-weight: bold;
     font-size: 20px;
     margin: 5px;
@@ -54,7 +54,7 @@
 }
 
 .buttons:hover{
-    float: center;
+    float: right;
     font-weight: bold;
     font-size: 20px;
     margin: 5px;
@@ -94,4 +94,15 @@
     border-radius: 10px;
     background-color: lightgray;
     border: none;
+}
+
+.select {
+    float: right;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px;
+    border: solid 1px #ababab;
+    border-radius: 5px;
+    background-color: lightgray;
+    padding: 2px;
 }

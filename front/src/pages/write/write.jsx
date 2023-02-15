@@ -50,21 +50,26 @@ function Write() {
     return (
         <>
             <form onSubmit={onSubmitHandler}>
-                <div style={{ textAlign: "center" }}>
+                <div style={{ margin: "0 auto", display: "block", width: "340px" }}>
                     <h1>
-                        <FontAwesomeIcon style={{ marginRight: "200px" }} icon="arrow-left" />
-
+                        <button style={{ border: "none", backgroundColor: "white" }}>
+                            <FontAwesomeIcon icon="arrow-left" />
+                        </button>
+                       
+                            <button className="buttons">
+                                올리기
+                            </button>
+                        
                         <box className="buttons">
                             익명 <input type="checkbox" checked={isChecked} onChange={handleChange} name="anonymous"></input>
                         </box>
-                        <box className="buttons"><button className="buttons" style={{border:"none"}}>올리기</button></box>
-                        <select className="buttons" name="post_type" id="post_type">
+                        
+                        <select className="select" name="post_type" id="post_type">
                             <option value="자유"> 자유</option>
                             <option value="유머">유머</option>
                             <option value="테스트">테스트</option>
                         </select>
-
-                        
+                     
                     </h1>
                 </div>
                 {error.length !== 0 ? <ErrorMessage error={error} /> : null}
