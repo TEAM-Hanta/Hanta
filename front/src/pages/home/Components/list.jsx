@@ -13,7 +13,7 @@ function List({ value }) {
                 <>
                     {data.map((v) => (
                         <div key={v.id}>
-                            <div className="list" style={{margin: "auto", display: "block", width: "380px"}}>
+                            <div className="list" style={{margin: "auto", display: "block", width: "360px"}}>
                                 <Link style={{ textDecoration: "none", color: "black" }} to={"/detail/" + v.id}>
                                     <div>
                                         <br />
@@ -30,7 +30,7 @@ function List({ value }) {
                                     </div>
 
                                     <div>
-                                        <div style={{ fontSize: "20px", paddingLeft: "20px", fontWeight: "bold" }}>
+                                        <div style={{ fontSize: "20px", paddingLeft: "10px", fontWeight: "bold" }}>
                                             {" "}
                                             {v.title}
                                             <div style={{ color: "gray", float: "right", fontSize: "12px", paddingTop: "5px" }}>
@@ -39,7 +39,7 @@ function List({ value }) {
                                         </div>
 
                                         <div>
-                                            <div style={{ fontSize: "20px", paddingLeft: "20px" }}>
+                                            <div style={{ fontSize: "20px", paddingLeft: "10px" }}>
                                                 {" "}
                                                 {v.content.substr(0, 10)}... {/* 내용 축약 시켜서 내보내기 */}
                                                 <div style={{ color: "black", float: "right", fontSize: "15px" }}>

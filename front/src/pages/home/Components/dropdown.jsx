@@ -39,7 +39,7 @@ function Report(props) {
                 </Dropdown.Item>
                 <Dropdown.Item
                     onClick={handleButtonClick}
-                    style={{ fontWeight: 'bold' }}
+                    style={{ fontWeight: 'bold', color:"red" }}
                 >    신고
                 </Dropdown.Item>
                 {showNotification && <NotificationContainer />}

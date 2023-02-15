@@ -79,10 +79,10 @@ function BoardList() {
 
     return (
         <>
-            <div style={{ margin: "auto", display: "block", width: "380px" }}>
+            <div style={{ margin: "auto", display: "block", width: "360px" }}>
                 <h1 style={{fontSize:"35px"}}>{title}게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
             </div>
-            <div style={{ margin: "0 auto", display: "block", width: "380px" }}>
+            <div style={{ margin: "0 auto", display: "block", width: "360px" }}>
                 <div>
                     {pop === 0 ? (
                         <button
@@ -113,7 +113,7 @@ function BoardList() {
                     )}
 
                     <input
-                        style={{ borderRadius: "10px", margin: "3px", width: "260px", height: "35px" }}
+                        style={{ borderRadius: "10px", margin: "3px", width: "250px", height: "35px", border:"1px solid gray" }}
                         type="text"
                         placeholder="Search..."
                         value={search}
