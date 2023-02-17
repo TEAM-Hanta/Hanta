@@ -79,38 +79,55 @@ function BoardList() {
 
     return (
         <>
-            <div style={{ paddingLeft: '15%' }}>
-                <h1>{title}게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
+            <div style={{ margin: "auto", display: "block", width: "360px" }}>
+                <h1 style={{fontSize:"35px"}}>{title}게시판</h1> {/*게시판 종류를 Link로 받아옴 함수로 넣어줄것*/}
             </div>
-            <div style={{ paddingLeft: '15%' }}>
+            <div style={{ margin: "0 auto", display: "block", width: "360px" }}>
                 <div>
                     {pop === 0 ? (
                         <button
-                            style={{ borderRadius: '10px', borderColor: 'grey' }}
+                            style={{
+                                fontSize: "20px",
+                                borderRadius: "10px",
+                                borderColor: "gray",
+                                backgroundColor: "lightgrey",
+                            }}
                             onClick={() => {
                                 setPop(1);
-                            }}
-                        >
+                            }}>
                             인기글
                         </button>
                     ) : (
                         <button
-                            style={{ borderRadius: '10px', borderColor: 'grey' }}
+                            style={{
+                                fontSize: "20px",
+                                borderRadius: "10px",
+                                borderColor: "grey",
+                                backgroundColor: "white",
+                            }}
                             onClick={() => {
                                 setPop(0);
-                            }}
-                        >
+                            }}>
                             최신글
                         </button>
                     )}
 
-                    <input style={{ borderRadius: '10px' }} type="text" placeholder="Search..." value={search} onChange={handleChange}></input>
-                    <FontAwesomeIcon icon="magnifying-glass" />
+                    <input
+                        style={{ borderRadius: "10px", margin: "3px", width: "250px", height: "35px", border:"1px solid gray" }}
+                        type="text"
+                        placeholder="Search..."
+                        value={search}
+                        onChange={handleChange}></input>
+                    <button style={{ border: "none", backgroundColor: "white", fontSize: "20px" }}>
+                        <FontAwesomeIcon icon="magnifying-glass" />
+                    </button>
                 </div>
             </div>
 
-            <div style={{ textAlign: 'center' }}>
-                <Suspense fallback={<>... 로딩</>}>{search === '' ? <List value={pop === 0 ? fetchPost() : fetchPost1()}></List> : <List value={fetchSearch(search)}></List>}</Suspense>
+            <div style={{ textAlign: "center" }}>
+                <Suspense fallback={<>... 로딩</>}>
+                    {search === "" ? <List value={pop === 0 ? fetchPost() : fetchPost1()}></List> : <List value={fetchSearch(search)}></List>}
+                </Suspense>
             </div>
         </>
     );

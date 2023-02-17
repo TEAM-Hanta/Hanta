@@ -1,5 +1,11 @@
 import Card from 'react-bootstrap/Card';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';   
+import React, { useState,useEffect } from "react";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css'; 
+import Noti from "./notice";
+
+
 
 function Licensecard({ value }) {
     const array = value.read()
@@ -23,17 +29,20 @@ function List({ value }) {
     return (
         <>
             {
-                value.map((val) =>
-                    <Card className="cardo">
+                value.map((val,idx) =>
+                <div key={idx}>
+
+                    <Card className="cardo" style={{marginBottom:"10px", marginTop:"10px"}}>
                         <Card.Body>
                             <Card.Title>
                                 <div className="name">
                                     {val.name}
                                 </div>
-                                <button className="licensebutton">알림신청</button>
+                                <Noti value = {val.name}></Noti>
                             </Card.Title>
                         </Card.Body>
                     </Card>
+                </div>
                 )
             }
         </>

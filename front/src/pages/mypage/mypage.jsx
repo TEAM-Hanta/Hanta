@@ -82,8 +82,8 @@ function Mypage() {
     };
     return (
         <>
-            <div>
-                <h1 style={{ fontWeight: 'bold', fontSize: '30px', marginLeft: '20px' }}>
+            <div style={{margin:"0 auto", display:"block", width:"360px"}}>
+                <h1 style={{fontSize:"35px"}}>
                     마이페이지
                     <button onClick={openModal} className="buttons" style={{ float: 'right' }}>
                         로그아웃

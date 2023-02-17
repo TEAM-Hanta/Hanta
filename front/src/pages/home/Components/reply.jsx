@@ -1,17 +1,19 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import './reply.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from "react";
+import Report from "./dropdown";
+import "./reply.css";
+import { NotificationContainer, NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 function Reply(props) {
     const [showReply, setShowReply] = useState(props.value.map(() => false));
 
-    const handleReplyClick = (index) => {
+    const handleReplyClick = (index) => () =>
         setShowReply((prevState) => {
             const newState = [...prevState];
             newState[index] = !newState[index];
             return newState;
         });
-    };
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -22,11 +24,11 @@ function Reply(props) {
         // const userId = localStorage.getItem("userId");
 
         try {
-            const response = await fetch('http://localhost:8080/api/posts/reply2', {
-                method: 'POST',
+            const response = await fetch("http://localhost:8080/api/posts/reply2", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
                 },
                 body: JSON.stringify({
                     // content,
@@ -45,24 +47,68 @@ function Reply(props) {
             // setError(err.message || '알 수 없는 에러가 발생했습니다.');
         }
     };
-    console.log(props.value);
+
+    const [showNotification, setShowNotification] = useState(false);
+
+    useEffect(() => {
+        setShowNotification(true);
+    }, []);
+
+    const handleButtonClick = () => {
+        NotificationManager.info("신고되었습니다", "댓글", 3000);
+    };
+
     return (
         <>
             <div>
-                {props.value?.map((reply) => (
-                    <div key={reply.index}>
-                        <br></br>
-                        <div className={reply.layer ? 'reply' : 'reply_reply'}>
-                            <h4>프로필 : {reply.anonymous === 1 ? '익명' : reply.nickname}</h4>
-                            <h4>{reply.content}</h4>
-                            <a>{new Date(reply.created_at).toLocaleString('ko-KR', { timeZone: 'UTC' })}</a>
-                            <button onClick={handleReplyClick(reply.index)}>답글</button>
-                            {showReply[reply.index] && (
+                {props.value?.map((reply, idx) => (
+                    <div style={{ margin: "15px" }} key={idx}>
+                        <div style={{ fontSize: "18px" }} className={reply.layer ? "reply" : "reply_reply"}>
+                            <h4 style={{ fontSize: "18px" }}>
+                                <button style={{ border: "1px solid gray", borderRadius: "5px" }}>
+                                    <FontAwesomeIcon icon="user" />
+                                </button>{" "}
+                                {reply.anonymous === 1 ? "익명" : reply.nickname}
+                            </h4>
+                            <h4 style={{ fontSize: "18px" }}>{reply.content}</h4>
+                            <a style={{ color: "gray", float: "right", fontSize: "12px", paddingTop: "12px" }}>
+                                {new Date(reply.created_at).toLocaleString("ko-KR", { timeZone: "UTC" })}
+                            </a>
+                            {reply.layer ? (
+                                <></>
+                            ) : (
+                                <button
+                                    style={{
+                                        fontSize: "15px",
+                                        border: "solid 1px #ababab",
+                                        borderRadius: "5px",
+                                    }}
+                                    onClick={handleReplyClick(idx)}>
+                                    답글
+                                </button>
+                            )}{" "}
+                            {showReply[idx] && (
                                 <form>
-                                    <input type="text" />
-                                    <button type="submit">작성</button>
+                                    <input
+                                        style={{ borderRadius: "5px", width: "150px", height: "25px", border: "1px solid gray", marginTop: "5px" }}
+                                        type="text"
+                                    />{" "}
+                                    <button style={{ fontSize: "15px", border: "solid 1px #ababab", borderRadius: "5px" }} type="submit">
+                                        작성
+                                    </button>
                                 </form>
                             )}
+                            <button
+                                style={{
+                                    fontSize: "15px",
+                                    border: "solid 1px #ababab",
+                                    borderRadius: "5px",
+                                    color:"red"
+                                }}
+                                onClick={handleButtonClick}>
+                                신고
+                            </button>
+                            {showNotification && <NotificationContainer />}
                         </div>
                     </div>
                 ))}

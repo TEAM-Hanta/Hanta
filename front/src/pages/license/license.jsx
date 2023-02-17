@@ -37,9 +37,8 @@ function License() {
     return (
         <>
             <div>
-                <h1 style={{ fontWeight: 'bold', fontSize: '30px', marginTop: '10px', marginLeft: '20px' }}>자격증 알리미</h1>
-            </div>
-            <br />
+                <h1 style={{ fontSize: "35px", margin:"0 auto", display:"block", width:"380px" }}>자격증 알리미</h1>
+            </div><br />
             <Suspense fallback={<>... 로딩</>}>
                 <Licensecard value={fetchlicense()}></Licensecard>
             </Suspense>
