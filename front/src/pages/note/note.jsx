@@ -52,7 +52,7 @@ function Note() {
     return (
         <>
             <div>
-                <h1 style={{ fontWeight: 'bold', fontSize: '30px', marginLeft: '20px' }}>쪽지함</h1>
+                <h1 style={{ margin:"0 auto", display:"block", width:"360px" }}>쪽지함</h1>
             </div>
 
             <br />
@@ -76,9 +76,9 @@ function Note() {
                 </button>
             </div>
 
-            <br />
+            <br /><br />
 
-            <Suspense fallback={<>... 로딩</>}>
+            <Suspense fallback={<div style={{margin:"0 auto", display:"block", width:"360px", textAlign:"center"}}>... 로딩</div>}>
                 <List value={page === 0 ? fetchNote1() : fetchNote2()}></List>
             </Suspense>
         </>

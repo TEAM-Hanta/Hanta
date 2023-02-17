@@ -56,7 +56,7 @@ function DetailNote() {
 
     return (
         <>
-            <Suspense style={{ textAlign: 'center', fontSize: '40px' }} fallback={<>...로딩</>}>
+            <Suspense fallback={<>...로딩</>}>
                 <NoteDetail value={fetchDetail(params.id)}></NoteDetail>
             </Suspense>
         </>
