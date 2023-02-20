@@ -36,7 +36,6 @@ module.exports = class Note {
 
     // 쪽지 읽음으로 변경
     static read(note_id) {
-        console.log('실행되니', note_id);
         return db.execute("UPDATE note SET note_read_type = 'Y' WHERE note_content_id = ?", [note_id]);
     }
 
