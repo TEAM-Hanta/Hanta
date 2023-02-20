@@ -30,7 +30,9 @@ exports.applyForNotification = async (req, res, next) => {
             message: '알림신청한 회원 데이터 삭제 성공',
         });
     } else {
-        findUser.forEach(async (result) => {
+        const [findLicense] = await License.findLicense(license_name);
+        console.log(findLicense);
+        findLicense.forEach(async (result) => {
             let addNotification = new License(null, user_id, license_name + ' 자격증 ' + result.exam_type + ' 일주일 남았습니다.', null, license_name, result.exam_date, result.exam_type);
 
             try {

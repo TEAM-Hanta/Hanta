@@ -29,6 +29,11 @@ module.exports = class License {
         return db.execute('SELECT * FROM license_notice WHERE user_id = ? AND license_name = ?', [user_id, license_name]);
     }
 
+    // license 테이블에서 해당 자격증의 이름, 응시일 데이터 찾기
+    static findLicense(license_name) {
+        return db.execute('SELECT * FROM license WHERE name = ?', [license_name]);
+    }
+
     // 전체 자격증 목록
     static licenseList() {
         return db.execute('SELECT DISTINCT name,major FROM license GROUP BY name ORDER BY name');
