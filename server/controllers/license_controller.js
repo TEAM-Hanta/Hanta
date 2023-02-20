@@ -31,7 +31,6 @@ exports.applyForNotification = async (req, res, next) => {
         });
     } else {
         const [findLicense] = await License.findLicense(license_name);
-        console.log(findLicense);
         findLicense.forEach(async (result) => {
             let addNotification = new License(null, user_id, license_name + ' 자격증 ' + result.exam_type + ' 일주일 남았습니다.', null, license_name, result.exam_date, result.exam_type);
 
