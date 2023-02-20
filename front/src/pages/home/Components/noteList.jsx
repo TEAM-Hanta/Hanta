@@ -31,8 +31,8 @@ function NoteList({ value }) {
                           </div>
                       </div>
                   ))
-                  : '쪽지가 없습니다.'}
-        </div>
+                : '쪽지가 없습니다.'}
+        </>
     );
 }
 
