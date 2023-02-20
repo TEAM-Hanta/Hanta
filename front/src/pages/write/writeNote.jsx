@@ -21,10 +21,9 @@ function WriteNote() {
     return (
         <>
             <form onSubmit={onSubmitHandler}>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ margin:"0 auto", display:"block", width:"340px" }}>
                     <h1>
-                        <FontAwesomeIcon style={{ marginRight: '200px' }} icon="arrow-left" />
-
+                        <button style={{border:"none", backgroundColor:"white"}}><FontAwesomeIcon icon="arrow-left" /></button>
                         <button className="buttons">보내기</button>
                     </h1>
                 </div>

@@ -125,12 +125,12 @@ function Mypage() {
                 </button>
             </div>
 
-            <br />
-
+            <br /><br />
+            <div style={{margin: "auto", display: "block", width: "360px", textAlign:"center"}}>
             <Suspense fallback={<>... 로딩</>}>
                 <List value={page === 0 ? fetchPost1() : page === 1 ? fetchPost2() : fetchPost3()}></List>
             </Suspense>
-
+            </div>
             <Modaly open={modalOpen} close={closeModal} header="Modal heading">
                 {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달 */}
             </Modaly>

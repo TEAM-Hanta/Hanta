@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
-import Licensecard from './licensecard';
-import '../css/license.css';
+import React, { Suspense } from "react";
+import Licensecard from "./licensecard";
+import "../css/license.css";
 
 function fetchlicense() {
     let license;
-    const suspender = fetch('http://localhost:8080/api/license', {
+    const suspender = fetch("http://localhost:8080/api/license", {
         headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
+            Authorization: "Bearer " + localStorage.getItem("token"),
         },
     })
         .then((response) => response.json())
@@ -37,11 +37,14 @@ function License() {
     return (
         <>
             <div>
-                <h1 style={{ fontSize: "35px", margin:"0 auto", display:"block", width:"380px" }}>자격증 알리미</h1>
-            </div><br />
-            <Suspense fallback={<>... 로딩</>}>
-                <Licensecard value={fetchlicense()}></Licensecard>
-            </Suspense>
+                <h1 style={{ fontSize: "35px", margin: "0 auto", display: "block", width: "360px" }}>자격증 알리미</h1>
+            </div>
+            <br /><br />
+            <div style={{ margin: "0 auto", display: "block", width: "380px" }}>
+                <Suspense fallback={<div style={{textAlign:"center"}}>... 로딩</div>}>
+                    <Licensecard value={fetchlicense()}></Licensecard>
+                </Suspense>
+            </div>
         </>
     );
 }

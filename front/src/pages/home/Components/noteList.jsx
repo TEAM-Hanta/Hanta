@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function NoteList({ value }) {
     const data = value.read();
     return (
-        <>
+        <div style={{margin:"0 auto", display:"block", width:"360px", textAlign:"center"}}>
             {data.length
                 ? data.map((v) => (
                       <div key={v.id}>

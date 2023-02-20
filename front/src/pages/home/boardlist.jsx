@@ -123,9 +123,8 @@ function BoardList() {
                     </button>
                 </div>
             </div>
-
             <div style={{ textAlign: "center" }}>
-                <Suspense fallback={<>... 로딩</>}>
+                <Suspense fallback={<div style={{marginTop:"40px"}}>... 로딩</div>}>
                     {search === "" ? <List value={pop === 0 ? fetchPost() : fetchPost1()}></List> : <List value={fetchSearch(search)}></List>}
                 </Suspense>
             </div>

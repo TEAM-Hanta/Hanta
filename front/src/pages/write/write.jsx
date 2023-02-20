@@ -55,21 +55,18 @@ function Write() {
                         <button style={{ border: "none", backgroundColor: "white" }}>
                             <FontAwesomeIcon icon="arrow-left" />
                         </button>
-                       
-                            <button className="buttons">
-                                올리기
-                            </button>
-                        
+
+                        <button className="buttons">올리기</button>
+
                         <box className="buttons">
                             익명 <input type="checkbox" checked={isChecked} onChange={handleChange} name="anonymous"></input>
                         </box>
-                        
+
                         <select className="select" name="post_type" id="post_type">
                             <option value="자유">자유</option>
                             <option value="비밀">비밀</option>
                             <option value="공부">공부</option>
                         </select>
-                     
                     </h1>
                 </div>
                 {error.length !== 0 ? <ErrorMessage error={error} /> : null}
