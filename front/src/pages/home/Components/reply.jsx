@@ -72,7 +72,7 @@ function Reply(props) {
                             </h4>
                             <h4 style={{ fontSize: "18px" }}>{reply.content}</h4>
                             <a style={{ color: "gray", float: "right", fontSize: "12px", paddingTop: "12px" }}>
-                                {new Date(reply.created_at).toLocaleString("ko-KR", { timeZone: "UTC" })}
+                                {new Date(reply.created_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'long', timeStyle: 'short' })}
                             </a>
                             {reply.layer ? (
                                 <></>

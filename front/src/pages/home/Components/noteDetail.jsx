@@ -13,7 +13,7 @@ function NoteDetail({ value }) {
                         <h2>[유저 프로필]{v.nickname}</h2>
                         <p>{v.note_read_type === 'Y' ? '읽음' : '읽지않음'}</p>
 
-                        {new Date(v.send_date).toLocaleString('ko-KR', { timeZone: 'UTC', dateStyle: 'long', timeStyle: 'short' })}
+                        {new Date(v.send_date).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'long', timeStyle: 'short' })}
                     </div>
 
                     <br />
