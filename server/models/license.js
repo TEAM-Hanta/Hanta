@@ -31,7 +31,7 @@ module.exports = class License {
 
     // 전체 자격증 목록
     static licenseList() {
-        return db.execute('SELECT DISTINCT name,major FROM license GROUP BY name');
+        return db.execute('SELECT DISTINCT name,major FROM license GROUP BY name ORDER BY name');
     }
 
     // 당일 보내줘야하는 자격증 알림 출력 (당일날짜 +7 = exam_date라면 "00자격증 필기 원서접수 일주일 남았습니다." 출력)
