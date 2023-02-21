@@ -104,7 +104,7 @@ function Detail({ value }) {
                             </button>{" "}
                             {v.anonymous === 1 ? "익명" : v.nickname}
                             <div style={{ color: "gray", float: "right", fontSize: "12px", paddingTop: "12px" }}>
-                                {new Date(v.created_at).toLocaleString("en-US", { timeZone: "UTC" })}
+                                {new Date(v.created_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'long', timeStyle: 'short' })}
                             </div>
                         </h2>
                     </div>

@@ -24,7 +24,7 @@ const Noticecp = ({value}) => {
         <div className="ct">
                 <ul>
                     <li className="bd" style={{fontSize:"15", fontWeight:"bold", paddingTop:"10px"}}>{v.message}</li>
-                    <div style={{fontSize:"12px", color:"gray"}}>{v.send_date}</div>
+                    <div style={{fontSize:"12px", color:"gray"}}>{new Date(v.send_date).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'long', timeStyle: 'short' })}</div>
                 </ul>
             </div>
         </Typography>

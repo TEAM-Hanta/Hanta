@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function NoteList({ value }) {
     const data = value.read();
     return (
-        <>
+        <div style={{ margin: '0 auto', display: 'block', width: '360px', textAlign: 'center' }}>
             {data.length
                 ? data.map((v) => (
                       <div key={v.id}>
@@ -32,7 +32,7 @@ function NoteList({ value }) {
                       </div>
                   ))
                 : '쪽지가 없습니다.'}
-        </>
+        </div>
     );
 }
 

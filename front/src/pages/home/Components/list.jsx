@@ -34,7 +34,7 @@ function List({ value }) {
                                             {" "}
                                             {v.title}
                                             <div style={{ color: "gray", float: "right", fontSize: "12px", paddingTop: "5px" }}>
-                                                {new Date(v.created_at).toLocaleString("ko-KR", { timeZone: "UTC" })}
+                                                {new Date(v.created_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', dateStyle: 'long', timeStyle: 'short' })}
                                             </div>
                                         </div>
 
