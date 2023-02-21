@@ -74,10 +74,7 @@ function Note() {
                 >
                     보낸 쪽지
                 </button>
-            </div>
-
-            <br /><br />    
-
+            </div>  
             <Suspense fallback={<div style={{margin:"0 auto", display:"block", width:"360px", textAlign:"center"}}>... 로딩</div>}>
                 <List value={page === 0 ? fetchNote1() : fetchNote2()}></List>
             </Suspense>

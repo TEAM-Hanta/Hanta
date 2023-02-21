@@ -83,6 +83,19 @@
     border: none;
     background-color: white;
     border-bottom: solid 1px #ababab;
+    color: rgb(104, 103, 103);
+}
+
+.buthony:hover {
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    border-bottom: solid 1px #ababab;
+    color: black;
 }
 
 .categodry-box {
