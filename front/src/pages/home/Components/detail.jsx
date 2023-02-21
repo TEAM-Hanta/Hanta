@@ -11,28 +11,28 @@ import "react-notifications/lib/notifications.css";
 
 function Detail({ value }) {
     const data = value.read();
-    console.log(data);
     const params = useParams(); //상세주소 게시물 번호들고오기
     const [reply, setReply] = useState([]);
-
-    console.log(params);
+    const [error, setError] = useState([])
 
     const [showReply, setShowReply] = useState(false);
     const handleReplyClick = () => {
         setShowReply(true);
     };
-
-    useEffect(() => {
+    const loadReply = () => {
         fetch(`http://localhost:8080/api/posts/${params.id}/reply`, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         }) //리플 소환
-            .then((response) => response.json())
-            .then((data) => setReply(data))
-            .catch((rejected) => {
-                console.log(rejected);
-            });
+        .then((response) => response.json())
+        .then((data) => setReply(data))
+        .catch((rejected) => {
+            console.log(rejected);
+        });
+    }
+    useEffect(() => {
+        loadReply();
     }, []);
 
     reply.sort((a, b) => {
@@ -52,6 +52,35 @@ function Detail({ value }) {
         NotificationManager.info("스크랩완료!", "게시글", 3000);
     };
 
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const content = e.target.content.value;
+        const anonymous = 1;
+        const userId = localStorage.getItem("userId");
+
+        try {
+            const response = await fetch(`http://localhost:8080/api/posts/${params.id}/reply`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+                body: JSON.stringify({
+                    content,
+                    userId,
+                    anonymous,
+                }),
+            });
+            const data = await response.json();
+            loadReply();
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+        } catch (err) {
+            setError(err.message || "알 수 없는 에러가 발생했습니다.");
+        }
+    };
     return (
         <>
             {data.map((v) => (
@@ -105,13 +134,13 @@ function Detail({ value }) {
                         <button
                             style={{ fontSize: "15px", border: "solid 1px #ababab", borderRadius: "5px" }}
                             onClick={handleReplyClick}>
-                            답글
+                            댓글
                         </button>
                         {showReply && (
-                            <form>
+                            <form onSubmit={onSubmitHandler}>
                                 <input
                                     style={{ borderRadius: "5px", width: "150px", height: "25px", border: "1px solid gray", marginTop: "5px" }}
-                                    type="text"
+                                    type="text" maxLength={20} name="content"
                                 />{" "}
                                 <button
                                     style={{
@@ -129,7 +158,7 @@ function Detail({ value }) {
                     <div>
                         {" "}
                         {/*댓글 영역 */}
-                        <Reply value={reply} />
+                        <Reply reply={reply} setReply={loadReply} />
                     </div>
                 </div>
             ))}

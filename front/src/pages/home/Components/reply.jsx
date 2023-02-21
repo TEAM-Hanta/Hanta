@@ -1,12 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Report from "./dropdown";
 import "./reply.css";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 
-function Reply(props) {
-    const [showReply, setShowReply] = useState(props.value.map(() => false));
+function Reply({reply, setReply}) {
+    const [showReply, setShowReply] = useState(reply.map(() => false));
+    const params = useParams();
+    const [error, setError] = useState([]);
+	const groupIds = reply.map((data) => data.group_id);
+	console.log(groupIds);
 
     const handleReplyClick = (index) => () =>
         setShowReply((prevState) => {
@@ -15,38 +20,39 @@ function Reply(props) {
             return newState;
         });
 
-    const onSubmitHandler = async (e) => {
-        e.preventDefault();
+   
+		
+	const onSubmitHandler = async (e, groupId) => {
+		e.preventDefault();
 
-        // const content = e.target.content.value;
-        // const post_type = e.target.post_type.value; //라디오 버튼으로 게시판 추가하기
-        // // const anonymous = isChecked;
-        // const userId = localStorage.getItem("userId");
+		const content = e.target.content.value;
+		const anonymous = true;
+		const userId = localStorage.getItem("userId");
+		const group_id = groupId;
 
-        try {
-            const response = await fetch("http://localhost:8080/api/posts/reply2", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + localStorage.getItem("token"),
-                },
-                body: JSON.stringify({
-                    // content,
-                    // userId,
-                    // post_type,
-                    // anonymous,
-                }),
-            });
-            const data = await response.json();
-            // navigate('/');
-
+		try {
+			const response = await fetch(`http://localhost:8080/api/posts/${params.id}/reply2`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + localStorage.getItem("token"),
+				},
+				body: JSON.stringify({
+					content,
+					userId,
+					anonymous,
+					group_id,
+				}),
+			});
+			const data = await response.json();
+            setReply()
             if (!response.ok) {
-                throw new Error(data.message);
-            }
-        } catch (err) {
-            // setError(err.message || '알 수 없는 에러가 발생했습니다.');
-        }
-    };
+				throw new Error(data.message);
+			}
+		} catch (err) {
+			setError(err.message || "알 수 없는 에러가 발생했습니다.");
+		}
+	};
 
     const [showNotification, setShowNotification] = useState(false);
 
@@ -61,7 +67,7 @@ function Reply(props) {
     return (
         <>
             <div>
-                {props.value?.map((reply, idx) => (
+                {reply?.map((reply, idx) => (
                     <div style={{ margin: "15px" }} key={idx}>
                         <div style={{ fontSize: "18px" }} className={reply.layer ? "reply" : "reply_reply"}>
                             <h4 style={{ fontSize: "18px" }}>
@@ -88,10 +94,10 @@ function Reply(props) {
                                 </button>
                             )}{" "}
                             {showReply[idx] && (
-                                <form>
+                                <form onSubmit={(e) => onSubmitHandler(e, groupIds[idx])}>
                                     <input
                                         style={{ borderRadius: "5px", width: "150px", height: "25px", border: "1px solid gray", marginTop: "5px" }}
-                                        type="text"
+                                        type="text" maxLength={20} name="content"
                                     />{" "}
                                     <button style={{ fontSize: "15px", border: "solid 1px #ababab", borderRadius: "5px" }} type="submit">
                                         작성

@@ -69,7 +69,7 @@ exports.createReply2 = async (req, res, next) => {
     const content = req.body.content;
     const post_id = req.params.pid;
     const user_id = req.userData.userId;
-    const group_id = req.body.id; // 댓글의 그룹번호 값 == 대댓글의 그룹번호 값
+    const group_id = req.body.group_id; // 댓글의 그룹번호 값 == 대댓글의 그룹번호 값
 
     const createReply = new Reply(null, content, 1, group_id, post_id, user_id);
     try {
