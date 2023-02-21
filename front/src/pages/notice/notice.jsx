@@ -68,7 +68,7 @@ function Notice() {
                 <h1 style={{ fontSize: "35px" }}>알림
                 <button className="buttons" onClick={handleButtonClick}>알림삭제</button>
                 </h1>
-                <br/><br/>
+                <br/>
             {showNotification && <NotificationContainer />}
             {showContent && (
                 <div style={{margin: "auto", display: "block", width: "360px", textAlign:"center"}}>

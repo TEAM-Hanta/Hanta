@@ -18,8 +18,7 @@ const Noticecp = ({value}) => {
     return (<>
         {props.map((v) => (
             <div key={v.index}>            
-        <br/>
-        <Paper style={{margin:"0 auto",display:"block", width:"300px", height:"80px"}} elevation={4} className={classes.paper}>
+        <Paper style={{margin:"0 auto",display:"block", width:"320px", height:"70px", backgroundColor:"lightgray", marginTop:"20px"}} elevation={4} className={classes.paper}>
         <Typography variant="body1">
         <div className="ct">
                 <ul>

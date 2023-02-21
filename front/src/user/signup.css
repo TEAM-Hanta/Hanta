@@ -5,11 +5,13 @@
 }
 
 .fuck {
-    text-align : center;
-    margin : 0 auto;
-    margin-top: 25px;
-    border: none;
+    margin: 0 auto;
+    display: block;
+    width: 360px;
+    text-align: center;
     background-color: white;
+    border: none;
+    margin-top: 50px;
 }
 
 .inputking {
